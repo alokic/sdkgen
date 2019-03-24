@@ -1,0 +1,481 @@
+openapi: 3.0.1
+tags:
+- name: clusters
+info:
+  title: Cluster API
+  description: Cluster operations, requests and responses
+  version: v1.3
+  contact:
+    email: support@qubole.com
+    name: API Support
+    url: http://api.qubole.com/support
+servers:
+- url: https://api.qubole.com/api
+paths:
+  /v1.3/clusters:
+    post:
+      description: Create Cluster
+      tags:
+      - v1.3
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: true
+        schema:
+          type: string
+        description: X-AUTH-TOKEN
+      - name: User-Agent
+        in: header
+        required: true
+        schema:
+          type: string
+        description: User-Agent
+      operationId: create_cluster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClusterRequest'
+            example: '{"datadog_settings":{"datadog_api_token":"","datadog_app_token":""},"disallow_cluster_termination":false,"ec2_settings":{"aws_preferred_availability_zone":"Any","aws_region":"us-west-2","bastion_node_port":"","bastion_node_public_dns":"","bastion_node_user":"ec2-user","compute_access_key":"\u003cyour_ec2_compute_access_key\u003e","compute_secret_key":"\u003cyour_ec2_compute_secret_key\u003e","compute_validated":true,"master_elastic_ip":"","role_instance_profile":"","subnet_id":"","use_account_compute_creds":true,"vpc_id":""},"enable_ganglia_monitoring":false,"engine_config":{"dbtap_id":"9670","fernet_key":"\u003cyour-fernet-key\u003e","hive_settings":{"hive.qubole.metadata.cache":"true","hive_version":"2.1.1","hs2_thrift_port":"10007","is_hs2":true,"overrides":"hive.execution.engine=tez"},"overrides":"core.dag_concurrency=32","type":"airflow"},"hadoop_settings":{"custom_config":{},"fairscheduler_settings":{"default_pool":"","fairscheduler_config_xml":""},"max_nodes":10,"use_hadoop2":false,"use_qubole_placement_policy":"","use_spark":true},"label":["my_cluster"],"node_bootstrap_file":"node_bootstrap.sh","node_configuration":{"custom_ec2_tags":"{\"project\":
+              \"webportal\", \"owner\": \"john@example.com\"}","ebs_upscaling_config":{"absolute_free_space_threshold":100,"max_ebs_volume_count":5,"percent_free_space_threshold":20,"sampling_interval":40,"sampling_window":8},"ebs_volume_count":0,"ebs_volume_size":"100GB","ebs_volume_type":"standard","fallback_to_ondemand":"spot","heterogeneous_instance_config":{"memory":[{"instance_type":"m4.4xlarge","weight":1},{"instance_type":"m4.2xlarge","weight":0.5},{"instance_type":"m4.xlarge","weight":0.25}]},"idle_cluster_timeout":0,"idle_cluster_timeout_in_secs":120,"initial_nodes":1,"master_instance_type":"m1.large","max_nodes":10,"node_base_cooldown_period":5,"node_spot_cooldown_period":10,"slave_instance_type":"m1.xlarge","slave_request_type":"spot","spot_block_settings":{"duration":120},"spot_instance_settings":{"maximum_bid_price_percentage":100,"maximum_spot_instance_percentage":60,"timeout_for_request":10},"stable_spot_instance_settings":{"maximum_bid_price_percentage":100,"timeout_for_request":10}},"presto_settings":{"custom_config":{},"enable_presto":false},"presto_version":"0.193","security_settings":{"encrypted_ephemerals":false,"persistent_security_groups":"","ssh_public_key":""},"spark_settings":{"custom_config":{}},"spark_version":"2.3","state":"DOWN","use_hadoop2":false,"zeppelin_interpreter_mode":"legacy"}'
+      responses:
+        4XX:
+          description: Error in processing request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example: '{"error":{"error_code":403,"error_message":"Access Denied"}}'
+        5XX:
+          description: Server error in processing request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example: '{"error":{"error_code":403,"error_message":"Access Denied"}}'
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClusterResponse'
+              example: '{"datadog_settings":{"datadog_api_token":"","datadog_app_token":""},"disallow_cluster_termination":false,"ec2_settings":{"aws_preferred_availability_zone":"Any","aws_region":"us-east-1","compute_access_key":"\u003cyour_ec2_compute_access_key\u003e","compute_secret_key":"\u003cyour_ec2_compute_secret_key\u003e","compute_validated":false,"subnet_id":"","vpc_id":""},"enable_ganglia_monitoring":false,"engine_config":{"dbtap_id":9670,"fernet_key":"rsHS7m/xJa7pkNtLpvwcGIFbkNsnSWHHnro+6ZWSsjo=","overrides":"core.dag_concurrency=32","type":"airflow"},"errors":[],"hadoop_settings":{"custom_config":{},"fairscheduler_settings":{"default_pool":{}},"use_hadoop2":false},"id":116,"label":["my_cluster"],"node_bootstrap_file":"node_bootstrap.sh","node_configuration":{"initial_nodes":1,"master_instance_type":"m1.large","max_nodes":10,"slave_instance_type":"m1.xlarge","slave_request_type":"spot","spot_instance_settings":{"maximum_bid_price_percentage":"100.0","maximum_spot_instance_percentage":60,"timeout_for_request":10},"use_stable_spot_nodes":false},"presto_settings":{"custom_config":{},"enable_presto":false},"security_settings":{"encrypted_ephemerals":false},"spark_s3_package_name":"","spark_settings":{"custom_config":{}},"state":"DOWN","zeppelin_s3_package_name":""}'
+components:
+  schemas:
+    CreateClusterRequest:
+      properties:
+        datadog_settings:
+          $ref: '#/components/schemas/CreateClusterRequestDatadogSettings'
+        disallow_cluster_termination:
+          type: boolean
+        ec2_settings:
+          $ref: '#/components/schemas/CreateClusterRequestEc2Settings'
+        enable_ganglia_monitoring:
+          type: boolean
+        engine_config:
+          $ref: '#/components/schemas/CreateClusterRequestEngineConfig'
+        hadoop_settings:
+          $ref: '#/components/schemas/CreateClusterRequestHadoopSettings'
+        label:
+          items:
+            type: string
+          type: array
+        node_bootstrap_file:
+          type: string
+        node_configuration:
+          $ref: '#/components/schemas/CreateClusterRequestNodeConfiguration'
+        presto_settings:
+          $ref: '#/components/schemas/CreateClusterRequestPrestoSettings'
+        presto_version:
+          type: string
+        security_settings:
+          $ref: '#/components/schemas/CreateClusterRequestSecuritySettings'
+        spark_settings:
+          $ref: '#/components/schemas/CreateClusterRequestSparkSettings'
+        spark_version:
+          type: string
+        state:
+          type: string
+        use_hadoop2:
+          type: boolean
+        zeppelin_interpreter_mode:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterRequestCustomConfig:
+      additionalProperties: true
+      type: object
+    CreateClusterRequestDatadogSettings:
+      properties:
+        datadog_api_token:
+          type: string
+        datadog_app_token:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterRequestEbsUpscalingConfig:
+      properties:
+        absolute_free_space_threshold:
+          type: number
+        max_ebs_volume_count:
+          type: number
+        percent_free_space_threshold:
+          type: number
+        sampling_interval:
+          type: number
+        sampling_window:
+          type: number
+      additionalProperties: true
+      type: object
+    CreateClusterRequestEc2Settings:
+      properties:
+        aws_preferred_availability_zone:
+          type: string
+        aws_region:
+          type: string
+        bastion_node_port:
+          type: string
+        bastion_node_public_dns:
+          type: string
+        bastion_node_user:
+          type: string
+        compute_access_key:
+          type: string
+        compute_secret_key:
+          type: string
+        compute_validated:
+          type: boolean
+        master_elastic_ip:
+          type: string
+        role_instance_profile:
+          type: string
+        subnet_id:
+          type: string
+        use_account_compute_creds:
+          type: boolean
+        vpc_id:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterRequestEngineConfig:
+      properties:
+        dbtap_id:
+          type: string
+        fernet_key:
+          type: string
+        hive_settings:
+          $ref: '#/components/schemas/CreateClusterRequestHiveSettings'
+        overrides:
+          type: string
+        type:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterRequestFairschedulerSettings:
+      properties:
+        default_pool:
+          type: string
+        fairscheduler_config_xml:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterRequestHadoopSettings:
+      properties:
+        custom_config:
+          $ref: '#/components/schemas/CreateClusterRequestCustomConfig'
+        fairscheduler_settings:
+          $ref: '#/components/schemas/CreateClusterRequestFairschedulerSettings'
+        max_nodes:
+          type: number
+        use_hadoop2:
+          type: boolean
+        use_qubole_placement_policy:
+          type: string
+        use_spark:
+          type: boolean
+      additionalProperties: true
+      type: object
+    CreateClusterRequestHeterogeneousInstanceConfig:
+      properties:
+        memory:
+          items:
+            $ref: '#/components/schemas/CreateClusterRequestMemoryItem'
+          type: array
+      additionalProperties: true
+      type: object
+    CreateClusterRequestHiveSettings:
+      properties:
+        hive.qubole.metadata.cache:
+          type: string
+        hive_version:
+          type: string
+        hs2_thrift_port:
+          type: string
+        is_hs2:
+          type: boolean
+        overrides:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterRequestMemoryItem:
+      properties:
+        instance_type:
+          type: string
+        weight:
+          type: number
+      additionalProperties: true
+      type: object
+    CreateClusterRequestNodeConfiguration:
+      properties:
+        custom_ec2_tags:
+          type: string
+        ebs_upscaling_config:
+          $ref: '#/components/schemas/CreateClusterRequestEbsUpscalingConfig'
+        ebs_volume_count:
+          type: number
+        ebs_volume_size:
+          type: string
+        ebs_volume_type:
+          type: string
+        fallback_to_ondemand:
+          type: string
+        heterogeneous_instance_config:
+          $ref: '#/components/schemas/CreateClusterRequestHeterogeneousInstanceConfig'
+        idle_cluster_timeout:
+          type: number
+        idle_cluster_timeout_in_secs:
+          type: number
+        initial_nodes:
+          type: number
+        master_instance_type:
+          type: string
+        max_nodes:
+          type: number
+        node_base_cooldown_period:
+          type: number
+        node_spot_cooldown_period:
+          type: number
+        slave_instance_type:
+          type: string
+        slave_request_type:
+          type: string
+        spot_block_settings:
+          $ref: '#/components/schemas/CreateClusterRequestSpotBlockSettings'
+        spot_instance_settings:
+          $ref: '#/components/schemas/CreateClusterRequestSpotInstanceSettings'
+        stable_spot_instance_settings:
+          $ref: '#/components/schemas/CreateClusterRequestStableSpotInstanceSettings'
+      additionalProperties: true
+      type: object
+    CreateClusterRequestPrestoSettings:
+      properties:
+        custom_config:
+          $ref: '#/components/schemas/CreateClusterRequestCustomConfig'
+        enable_presto:
+          type: boolean
+      additionalProperties: true
+      type: object
+    CreateClusterRequestSecuritySettings:
+      properties:
+        encrypted_ephemerals:
+          type: boolean
+        persistent_security_groups:
+          type: string
+        ssh_public_key:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterRequestSparkSettings:
+      properties:
+        custom_config:
+          $ref: '#/components/schemas/CreateClusterRequestCustomConfig'
+      additionalProperties: true
+      type: object
+    CreateClusterRequestSpotBlockSettings:
+      properties:
+        duration:
+          type: number
+      additionalProperties: true
+      type: object
+    CreateClusterRequestSpotInstanceSettings:
+      properties:
+        maximum_bid_price_percentage:
+          type: number
+        maximum_spot_instance_percentage:
+          type: number
+        timeout_for_request:
+          type: number
+      additionalProperties: true
+      type: object
+    CreateClusterRequestStableSpotInstanceSettings:
+      properties:
+        maximum_bid_price_percentage:
+          type: number
+        timeout_for_request:
+          type: number
+      additionalProperties: true
+      type: object
+    CreateClusterResponse:
+      properties:
+        datadog_settings:
+          $ref: '#/components/schemas/CreateClusterResponseDatadogSettings'
+        disallow_cluster_termination:
+          type: boolean
+        ec2_settings:
+          $ref: '#/components/schemas/CreateClusterResponseEc2Settings'
+        enable_ganglia_monitoring:
+          type: boolean
+        engine_config:
+          $ref: '#/components/schemas/CreateClusterResponseEngineConfig'
+        errors:
+          items:
+            type: string
+          type: array
+        hadoop_settings:
+          $ref: '#/components/schemas/CreateClusterResponseHadoopSettings'
+        id:
+          type: number
+        label:
+          items:
+            type: string
+          type: array
+        node_bootstrap_file:
+          type: string
+        node_configuration:
+          $ref: '#/components/schemas/CreateClusterResponseNodeConfiguration'
+        presto_settings:
+          $ref: '#/components/schemas/CreateClusterResponsePrestoSettings'
+        security_settings:
+          $ref: '#/components/schemas/CreateClusterResponseSecuritySettings'
+        spark_s3_package_name:
+          type: string
+        spark_settings:
+          $ref: '#/components/schemas/CreateClusterResponseSparkSettings'
+        state:
+          type: string
+        zeppelin_s3_package_name:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterResponseCustomConfig:
+      additionalProperties: true
+      type: object
+    CreateClusterResponseDatadogSettings:
+      properties:
+        datadog_api_token:
+          type: string
+        datadog_app_token:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterResponseDefaultPool:
+      additionalProperties: true
+      type: object
+    CreateClusterResponseEc2Settings:
+      properties:
+        aws_preferred_availability_zone:
+          type: string
+        aws_region:
+          type: string
+        compute_access_key:
+          type: string
+        compute_secret_key:
+          type: string
+        compute_validated:
+          type: boolean
+        subnet_id:
+          type: string
+        vpc_id:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterResponseEngineConfig:
+      properties:
+        dbtap_id:
+          type: number
+        fernet_key:
+          type: string
+        overrides:
+          type: string
+        type:
+          type: string
+      additionalProperties: true
+      type: object
+    CreateClusterResponseFairschedulerSettings:
+      properties:
+        default_pool:
+          $ref: '#/components/schemas/CreateClusterResponseDefaultPool'
+      additionalProperties: true
+      type: object
+    CreateClusterResponseHadoopSettings:
+      properties:
+        custom_config:
+          $ref: '#/components/schemas/CreateClusterResponseCustomConfig'
+        fairscheduler_settings:
+          $ref: '#/components/schemas/CreateClusterResponseFairschedulerSettings'
+        use_hadoop2:
+          type: boolean
+      additionalProperties: true
+      type: object
+    CreateClusterResponseNodeConfiguration:
+      properties:
+        initial_nodes:
+          type: number
+        master_instance_type:
+          type: string
+        max_nodes:
+          type: number
+        slave_instance_type:
+          type: string
+        slave_request_type:
+          type: string
+        spot_instance_settings:
+          $ref: '#/components/schemas/CreateClusterResponseSpotInstanceSettings'
+        use_stable_spot_nodes:
+          type: boolean
+      additionalProperties: true
+      type: object
+    CreateClusterResponsePrestoSettings:
+      properties:
+        custom_config:
+          $ref: '#/components/schemas/CreateClusterResponseCustomConfig'
+        enable_presto:
+          type: boolean
+      additionalProperties: true
+      type: object
+    CreateClusterResponseSecuritySettings:
+      properties:
+        encrypted_ephemerals:
+          type: boolean
+      additionalProperties: true
+      type: object
+    CreateClusterResponseSparkSettings:
+      properties:
+        custom_config:
+          $ref: '#/components/schemas/CreateClusterResponseCustomConfig'
+      additionalProperties: true
+      type: object
+    CreateClusterResponseSpotInstanceSettings:
+      properties:
+        maximum_bid_price_percentage:
+          type: string
+        maximum_spot_instance_percentage:
+          type: number
+        timeout_for_request:
+          type: number
+      additionalProperties: true
+      type: object
+    Error:
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorError'
+      additionalProperties: true
+      type: object
+    ErrorError:
+      properties:
+        error_code:
+          type: number
+        error_message:
+          type: string
+      additionalProperties: true
+      type: object

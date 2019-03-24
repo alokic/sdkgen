@@ -1,0 +1,26 @@
+---
+openapi: 3.0.1
+tags:
+- name: 'v2'
+- name: 'v1.3'
+
+info:
+  title: Qubole API Specification
+  description: |
+    This document describes Qubole's REST API for various resource
+  version: '1.0'
+  contact:
+    name: API support
+    url: http://www.qubole.com/support
+    email: support@example.com
+servers:
+  - url: https://api.qubole.com/api
+paths:
+  /v2/accounts:
+    $ref: 'v2/accounts/create.yaml#/paths/api'
+  /v1.3/clusters:
+    $ref: 'v1.3/clusters/create.yaml#/paths/api'
+  /v1.3/accounts:
+    $ref: 'v1.3/accounts/create.yaml#/paths/api'
+
+

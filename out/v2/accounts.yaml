@@ -1,0 +1,225 @@
+openapi: 3.0.1
+tags:
+- name: accounts
+info:
+  title: Account API
+  description: Account operations, requests and responses
+  version: v2.0
+  contact:
+    email: support@qubole.com
+    name: API Support
+    url: http://api.qubole.com/support
+servers:
+- url: https://api.qubole.com/api
+paths:
+  /v2/accounts/:
+    post:
+      description: Create Account
+      tags:
+      - v2.0
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: true
+        schema:
+          type: string
+        description: X-AUTH-TOKEN
+      - name: User-Agent
+        in: header
+        required: true
+        schema:
+          type: string
+        description: User-Agent
+      operationId: create_account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountRequest'
+            example: '{"account":{"CacheQuotaSizeInGB":50,"aws_region":"us-east-1","compute_access_key":"$COMPUTE_ACCESS_KEY","compute_secret_key":"$COMPUTE_SECRET_KEY","compute_type":"CUSTOMER_MANAGED","defloc":"$DEFLOC","idle_cluster_timeout":3,"idle_session_timeout":2880,"level":"free","name":"Test","storage_access_key":"$STORAGE_ACCESS_KEY","storage_secret_key":"$STORAGE_SECRET_KEY","storage_type":"CUSTOMER_MANAGED","sub_account_creation":false}}'
+      responses:
+        4XX:
+          description: Error in processing request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example: '{"error":{"error_code":403,"error_message":"Access Denied"}}'
+        5XX:
+          description: Server error in processing request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example: '{"error":{"error_code":403,"error_message":"Access Denied"}}'
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAccountResponse'
+              example: '{"account_id":"$ACCOUNT_ID","authentication_token":"$AUTH_TOKEN","groups":["system-admin","everyone"],"is_aws_keys_enabled":true,"name":"clone
+                acc","state":"success_create","status":"success"}'
+  /v2/accounts/{user_id}/1:
+    get:
+      description: Get an Account
+      tags:
+      - v2.0
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: true
+        schema:
+          type: string
+        description: X-AUTH-TOKEN
+      - name: User-Agent
+        in: header
+        required: true
+        schema:
+          type: string
+        description: User-Agent
+      - name: id
+        in: query
+        required: false
+        schema:
+          type: number
+        description: id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: user_id
+      operationId: get_account
+      responses:
+        4XX:
+          description: Error in processing request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example: '{"error":{"error_code":403,"error_message":"Access Denied"}}'
+        5XX:
+          description: Server error in processing request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example: '{"error":{"error_code":403,"error_message":"Access Denied"}}'
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAccountResponse'
+              example: '{"authorized_ssh_key":"","compute_access_key":"$COMPUTE_ACCESS_KEY","compute_secret_key":"$COMPUTE_SECRET_KEY","compute_type":"CUSTOMER_MANAGED","compute_validated":true,"id":8,"idle_session_timeout":0,"is_aws_role_enabled":false,"name":"account-data-analyst","storage_access_key":"$STORAGE_ACCESS_KEY","storage_location":"data.com/logs/production","storage_secret_key":"$STORAGE_SECRET_KEY","storage_type":"CUSTOMER_MANAGED","storage_validated":true}'
+components:
+  schemas:
+    CreateAccountRequest:
+      properties:
+        account:
+          $ref: '#/components/schemas/CreateAccountRequestAccount'
+      additionalProperties: true
+      type: object
+    CreateAccountRequestAccount:
+      properties:
+        CacheQuotaSizeInGB:
+          type: number
+        aws_region:
+          type: string
+        compute_access_key:
+          type: string
+        compute_secret_key:
+          type: string
+        compute_type:
+          type: string
+        defloc:
+          type: string
+        idle_cluster_timeout:
+          type: number
+        idle_session_timeout:
+          type: number
+        level:
+          type: string
+        name:
+          type: string
+        storage_access_key:
+          type: string
+        storage_secret_key:
+          type: string
+        storage_type:
+          type: string
+        sub_account_creation:
+          type: boolean
+      additionalProperties: true
+      type: object
+    CreateAccountResponse:
+      properties:
+        account_id:
+          type: string
+        authentication_token:
+          type: string
+        groups:
+          items:
+            type: string
+          type: array
+        is_aws_keys_enabled:
+          type: boolean
+        name:
+          type: string
+        state:
+          type: string
+        status:
+          type: string
+      additionalProperties: true
+      type: object
+    Error:
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorError'
+      additionalProperties: true
+      type: object
+    ErrorError:
+      properties:
+        error_code:
+          type: number
+        error_message:
+          type: string
+      additionalProperties: true
+      type: object
+    GetAccountRequest:
+      items:
+        type: string
+      type: array
+    GetAccountResponse:
+      properties:
+        authorized_ssh_key:
+          type: string
+        compute_access_key:
+          type: string
+        compute_secret_key:
+          type: string
+        compute_type:
+          type: string
+        compute_validated:
+          type: boolean
+        id:
+          type: number
+        idle_session_timeout:
+          type: number
+        is_aws_role_enabled:
+          type: boolean
+        name:
+          type: string
+        storage_access_key:
+          type: string
+        storage_location:
+          type: string
+        storage_secret_key:
+          type: string
+        storage_type:
+          type: string
+        storage_validated:
+          type: boolean
+      additionalProperties: true
+      type: object

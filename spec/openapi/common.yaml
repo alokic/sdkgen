@@ -1,0 +1,74 @@
+securitySchemes:
+  AuthToken:        # arbitrary name for the security scheme
+    type: authToken
+    in: header       # can be "header", "query" or "cookie"
+    name: X-AUTH-TOKEN
+
+security:
+  - AuthToken: []
+
+defaultMediatypes:
+  - application/json
+
+parameters:
+  authToken:
+    name: X-AUTH-TOKEN
+    in: header
+    required: true
+    schema:
+      type: string
+    description: Access token
+  userAgent:
+    name: User-Agent
+    description: All API consumers MUST provide a user agent
+    schema:
+      type: string
+    in: header
+    required: true
+
+components:
+  schemas:
+    ErrorObject:
+      type: object
+      additionalProperties: false
+      properties:
+        error_code:
+          type: integer
+        error_message:
+          type: string
+      required:
+      - error_code
+      - error_message
+      title: ErrorObject
+    Error:
+      type: object
+      additionalProperties: false
+      properties:
+        error:
+          "$ref": "#/components/schemas/ErrorObject"
+      required:
+      - error
+      title: Request error
+  responses:
+    RequestError:
+      description: Request error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example: |-
+            "error": {
+                "error_code": 403,
+                "error_message": "Access Denied"
+            }
+    ServerError:
+      description: Request error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example: |-
+            "error": {
+                "error_code": 500,
+                "error_message": "Internal server error"
+            }

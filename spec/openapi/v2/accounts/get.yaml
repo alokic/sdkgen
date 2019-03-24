@@ -1,0 +1,67 @@
+openapi: 3.0.1
+info:
+  title: Account API
+  description: Account operations, requests and responses
+  version: "v2"
+  contact:
+    name: API Support
+    url: http://api.qubole.com/support
+    email: support@qubole.com
+tags:
+  - name: Account API
+paths:
+  api:
+    get:
+      description: Get account request
+      tags:
+        - 'v2'
+        - 'accounts'
+      parameters:
+        - $ref: "../common.yaml#/parameters/userAgent"
+        - $ref: "../common.yaml#/parameters/authToken"
+      operationId: v1.3.get_account
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAccountResponse"
+        '4XX':
+          description: Error in processing request
+          $ref: "../common.yaml#/components/responses/RequestError"
+        '5XX':
+          description: Server error in processing request
+          $ref: "../common.yaml#/components/responses/ServerError"
+components:
+  schemas:
+    GetAccountResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        state:
+          type: string
+        groups:
+          type: array
+          items:
+            type: string
+        authentication_token:
+          type: string
+        account_id:
+          type: string
+        is_aws_keys_enabled:
+          type: boolean
+        status:
+          type: string
+      required:
+        - account_id
+        - authentication_token
+        - groups
+        - is_aws_keys_enabled
+        - name
+        - state
+        - status
+  securitySchemes:
+    $ref: "../common.yaml#/securitySchemes"

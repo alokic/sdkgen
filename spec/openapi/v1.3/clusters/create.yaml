@@ -1,0 +1,245 @@
+openapi: 3.0.1
+info:
+  title: Cluster API
+  description: Cluster operations, requests and responses
+  version: "v1.3"
+  contact:
+    name: API Support
+    url: http://api.qubole.com/support
+    email: support@qubole.com
+tags:
+  - name: Cluster API
+paths:
+  api:
+    post:
+      description: Create cluster request
+      tags:
+        - 'v1.3'
+        - 'clusters'
+      parameters:
+        - $ref: "../common.yaml#/parameters/userAgent"
+        - $ref: "../common.yaml#/parameters/authToken"
+      operationId: v13_create_cluster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateClusterRequest"
+            examples:
+              "0":
+                value: |-
+                  {
+                    "security_settings": {
+                        "encrypted_ephemerals": false
+                    },
+                    "enable_ganglia_monitoring": false,
+                    "label": [
+                        "my_cluster"
+                    ],
+                    "ec2_settings": {
+                        "compute_validated": false,
+                        "compute_secret_key": "<your_ec2_compute_secret_key>",
+                        "aws_region": "us-east-1",
+                        "vpc_id": null,
+                        "aws_preferred_availability_zone": "Any",
+                        "compute_access_key": "<your_ec2_compute_access_key>",
+                        "subnet_id": null
+                    },
+                    "node_bootstrap_file": "node_bootstrap.sh",
+                    "hadoop_settings": {
+                        "use_hadoop2": false,
+                        "custom_config": null,
+                        "fairscheduler_settings": {
+                            "default_pool": null
+                        }
+                    },
+                    "disallow_cluster_termination": false,
+                    "presto_settings": {
+                        "enable_presto": false,
+                        "custom_config": null
+                    },
+                    "id": 116,
+                    "state": "DOWN",
+                    "node_configuration": {
+                        "max_nodes": 10,
+                        "master_instance_type": "m1.large",
+                        "slave_instance_type": "m1.xlarge",
+                        "use_stable_spot_nodes": false,
+                        "slave_request_type": "spot",
+                        "initial_nodes": 1,
+                        "spot_instance_settings": {
+                            "maximum_bid_price_percentage": "100.0",
+                            "timeout_for_request": 10,
+                            "maximum_spot_instance_percentage": 60
+                        }
+                    }
+                  }
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateClusterResponse"
+        '4XX':
+          description: Error in processing request
+          $ref: "../common.yaml#/components/responses/RequestError"
+        '5XX':
+          description: Server error in processing request
+          $ref: "../common.yaml#/components/responses/ServerError"
+components:
+  schemas:
+    Account:
+      properties:
+        name:
+          type: string
+        xyz:
+          type: number
+      additionalProperties: true
+      type: object
+    CreateClusterRequest:
+      properties:
+        disallow_cluster_termination:
+          type: boolean
+        ec2_settings:
+          $ref: '#/components/schemas/Ec2Settings'
+        enable_ganglia_monitoring:
+          type: boolean
+        hadoop_settings:
+          $ref: '#/components/schemas/HadoopSettings'
+        label:
+          items:
+            $ref: '#/components/schemas/LabelItem'
+          type: array
+        node_bootstrap_file:
+          type: string
+        node_configuration:
+          $ref: '#/components/schemas/NodeConfiguration'
+        presto_settings:
+          $ref: '#/components/schemas/PrestoSettings'
+        security_settings:
+          $ref: '#/components/schemas/SecuritySettings'
+        state:
+          type: string
+        use_hadoop2:
+          type: boolean
+      additionalProperties: true
+      type: object
+    CreateClusterResponse:
+      properties:
+        disallow_cluster_termination:
+          type: boolean
+        ec2_settings:
+          $ref: '#/components/schemas/Ec2Settings'
+        enable_ganglia_monitoring:
+          type: boolean
+        hadoop_settings:
+          $ref: '#/components/schemas/HadoopSettings'
+        id:
+          type: number
+        label:
+          items:
+            type: string
+          type: array
+        node_bootstrap_file:
+          type: string
+        node_configuration:
+          $ref: '#/components/schemas/NodeConfiguration'
+        presto_settings:
+          $ref: '#/components/schemas/PrestoSettings'
+        security_settings:
+          $ref: '#/components/schemas/SecuritySettings'
+        state:
+          type: string
+      additionalProperties: true
+      type: object
+    CustomConfig:
+      additionalProperties: true
+      type: object
+    DefaultPool:
+      additionalProperties: true
+      type: object
+    Ec2Settings:
+      properties:
+        aws_preferred_availability_zone:
+          type: string
+        aws_region:
+          type: string
+        compute_access_key:
+          type: string
+        compute_secret_key:
+          type: string
+        compute_validated:
+          type: boolean
+        subnet_id:
+          type: string
+        vpc_id:
+          type: string
+      additionalProperties: true
+      type: object
+    FairschedulerSettings:
+      properties:
+        default_pool:
+          $ref: '#/components/schemas/DefaultPool'
+      additionalProperties: true
+      type: object
+    HadoopSettings:
+      properties:
+        custom_config:
+          $ref: '#/components/schemas/CustomConfig'
+        fairscheduler_settings:
+          $ref: '#/components/schemas/FairschedulerSettings'
+        use_hadoop2:
+          type: boolean
+      additionalProperties: true
+      type: object
+    LabelItem:
+      properties:
+        account:
+          $ref: '#/components/schemas/Account'
+      additionalProperties: true
+      type: object
+    NodeConfiguration:
+      properties:
+        initial_nodes:
+          type: number
+        master_instance_type:
+          type: string
+        max_nodes:
+          type: number
+        slave_instance_type:
+          type: string
+        slave_request_type:
+          type: string
+        spot_instance_settings:
+          $ref: '#/components/schemas/SpotInstanceSettings'
+        use_stable_spot_nodes:
+          type: boolean
+      additionalProperties: true
+      type: object
+    PrestoSettings:
+      properties:
+        custom_config:
+          $ref: '#/components/schemas/CustomConfig'
+        enable_presto:
+          type: boolean
+      additionalProperties: true
+      type: object
+    SecuritySettings:
+      properties:
+        encrypted_ephemerals:
+          type: boolean
+      additionalProperties: true
+      type: object
+    SpotInstanceSettings:
+      properties:
+        maximum_bid_price_percentage:
+          type: string
+        maximum_spot_instance_percentage:
+          type: number
+        timeout_for_request:
+          type: number
+      additionalProperties: true
+      type: object
+  securitySchemes:
+    $ref: "../common.yaml#/securitySchemes"
