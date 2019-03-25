@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/alokic/sdkgen/badge.svg?t=4uMFW5)](https://coveralls.io/github/alokic/sdkgen)
 [![Build Status](https://drone.alokic.com/api/badges/alokic/sdkgen/status.svg)](https://drone.alokic.com/alokic/sdkgen)
 
-Generate `openapi 3 API spec` from `json` request and responses of `REST APIs`.
+Generate `openapi 3 spec` from `json` request and responses of `REST APIs`.
 
 ## Local Setup
 
