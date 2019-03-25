@@ -27,6 +27,8 @@ $ brew install dep
 
 3. Git clone the repo in $GOPATH/src/github.com/alokic.
 
+    ```mkdir -p $GOPATH/src/github.com/alokic```
+
     ```cd $GOPATH/src/github.com/alokic```
 
     ```git clone git@github.com:alokic/sdkgen.git```

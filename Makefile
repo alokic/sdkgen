@@ -18,7 +18,7 @@ all: clean fmt test vet linux darwin 	## Builds the project.
 
 .PHONY: test
 test: 	## Tests the project except vendor and deployment folders
-	@GOCACHE=off go test -v  $(shell go list ./... | grep -v /vendor/ | grep -v /deployment/ | grep -v /output/ ) 
+	@go test -v  $(shell go list ./... | grep -v /vendor/ | grep -v /deployment/ | grep -v /output/ ) 
 
 .PHONY: lint
 lint:														## lints the project except vendor and deployment folders
