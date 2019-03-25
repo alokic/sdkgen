@@ -35,7 +35,7 @@ $ brew install dep
 
 4. Check all deps are there by running below
 
-   ```$dep ensure```
+   ```dep ensure```
 
 5. Export required environment variables
 
@@ -52,7 +52,7 @@ $ brew install dep
 
 8. Run the app
 
-   ```sdkgen openapi --in <input_path> --out <output_path>``` # generates only `openapi` specs
+   ```sdkgen --in <input_path> --out <output_path>``` # generates only `openapi` specs
 
 9. Output
 
