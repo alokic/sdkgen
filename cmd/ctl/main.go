@@ -14,7 +14,7 @@
 
 package main
 
-import "github.com/honestbee/authorizer/cmd/ctl/cmd"
+import "github.com/alokic/authorizer/cmd/ctl/cmd"
 
 func main() {
 	cmd.Execute()

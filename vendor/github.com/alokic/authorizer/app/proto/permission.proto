@@ -1,0 +1,71 @@
+syntax = "proto3";
+package proto;
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message Permission {
+    option (gogoproto.goproto_getters) = false;
+    uint64 id = 1;
+    string name = 2;
+    int64 created_at = 3;
+    int64 updated_at = 4;
+    uint64 service_id = 5;
+    string path = 6;
+    string action = 7;
+    string description = 8;
+    string state = 9;
+}
+
+message PermissionCreateRequest {
+    option (gogoproto.goproto_getters) = false;
+    string name = 1;
+    uint64 service_id = 2;
+    string path = 3;
+    string action = 4;
+    string description = 5;
+}
+
+message PermissionCreateReply {
+    Permission permission = 1;
+}
+
+message PermissionUpdateRequest {
+    option (gogoproto.goproto_getters) = false;
+    uint64 id = 1;
+    string name = 2;
+    uint64 service_id = 5;
+    string path = 6;
+    string action = 7;
+    string description = 8;
+}
+
+message PermissionUpdateReply {
+    Permission permission = 1;
+}
+
+message PermissionBlockRequest {
+    option (gogoproto.goproto_getters) = false;
+    uint64 id = 1;
+}
+
+message PermissionBlockReply {
+    bool result = 1;
+}
+
+message PermissionActivateRequest {
+	option (gogoproto.goproto_getters) = false;
+	uint64 id = 1;
+}
+
+message PermissionActivateReply {
+    bool result = 1;
+}
+message PermissionListRequest {
+    option (gogoproto.goproto_getters) = false;
+    uint64 access_policy_id = 1;
+}
+
+
+message PermissionListReply {
+    repeated Permission permissions = 1;
+}
+

@@ -1,0 +1,18 @@
+syntax = "proto3";
+package proto;
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message Report {
+    option (gogoproto.goproto_getters) = false;
+    string svc = 1;
+    string err = 2;
+    string msg = 3;
+}
+
+message ReportHealthRequest {
+	option (gogoproto.goproto_getters) = false;
+}
+
+message ReportHealthReply {
+	repeated Report reports = 1;
+}

@@ -1,0 +1,43 @@
+{
+    "name": "Get an Account",
+    "version": "v2.0",
+    "http_method": "get",
+    "http_resource": "accounts",
+    "operation": "get",
+    "url": "/v2/{user_id}/1",
+    "query": {
+        "id": 565
+    },
+    "headers": {
+        "X-AUTH-TOKEN": "kkjkj",
+        "User-Agent": "mozilla"
+    },
+    "response": {
+        "id": 8,
+        "name": "account-data-analyst",
+        "storage_type": "CUSTOMER_MANAGED",
+        "compute_type": "CUSTOMER_MANAGED",
+        "storage_validated": true,
+        "compute_validated": true,
+        "is_aws_role_enabled": false,
+        "idle_session_timeout": 0,
+        "storage_access_key": "$STORAGE_ACCESS_KEY",
+        "storage_secret_key": "$STORAGE_SECRET_KEY",
+        "storage_location": "data.com/logs/production",
+        "authorized_ssh_key": "",
+        "compute_access_key": "$COMPUTE_ACCESS_KEY",
+        "compute_secret_key": "$COMPUTE_SECRET_KEY"
+    },
+    "error": {
+        "error": {
+            "error_code": 403,
+            "error_message": "Access Denied"
+        }
+    },
+    "required_request": [],
+    "required_query": [],
+    "required_headers": [
+        "X-AUTH-TOKEN",
+        "User-Agent"
+    ]
+}

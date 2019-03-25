@@ -44,7 +44,7 @@ func (m *MainSpec) Build() {
 	m.Info = &info{
 		Title:       typeutils.ToStr(inf["title"]),
 		Description: typeutils.ToStr(inf["description"]),
-		Version:     fmt.Sprintf("v%v", typeutils.ToStr(inf["version"])),
+		Version:     fmt.Sprintf("%v", typeutils.ToStr(inf["version"])),
 		Contact:     inf["contact"].(map[string]interface{}),
 	}
 	m.Tags = m.toMapSlice("tags")

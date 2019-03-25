@@ -88,7 +88,7 @@ func (b *Builder) toServer() []map[string]interface{} {
 }
 
 func (b *Builder) version() string {
-	return fmt.Sprintf("v%v", b.Spec.Version)
+	return fmt.Sprintf("%v", b.Spec.Version)
 }
 
 func scope(op, resource string) string {

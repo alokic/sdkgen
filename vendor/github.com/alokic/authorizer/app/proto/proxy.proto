@@ -1,0 +1,32 @@
+syntax = "proto3";
+package proto;
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message Proxy {
+
+}
+
+message ProxyLoadRequest {
+    option (gogoproto.goproto_getters) = false;
+}
+
+message ProxyLoadReply {
+	option (gogoproto.goproto_getters) = false;    
+}
+
+message ProxyLoadAsyncRequest {
+    option (gogoproto.goproto_getters) = false;
+    int64 interval_in_seconds = 1;
+}
+
+message ProxyLoadAsyncReply {
+	option (gogoproto.goproto_getters) = false;    
+}
+
+message ProxyGetRequest {
+	option (gogoproto.goproto_getters) = false;
+}
+
+message ProxyGetReply {
+	option (gogoproto.goproto_getters) = false;    
+}

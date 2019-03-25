@@ -29,7 +29,7 @@ func (p *Path) build() {
 func (p *Path) buildPost() *apiDef {
 	return &apiDef{
 		Desciption:  p.spec.Name,
-		Tags:        []string{fmt.Sprintf("v%v", p.spec.Version)},
+		Tags:        []string{fmt.Sprintf("%v", p.spec.Version)},
 		OperationID: fmt.Sprintf("%s_%s", p.spec.Operation, inflection.Singular(p.spec.HTTPResource)),
 		Parameters:  p.createParameters(),
 		Request:     p.createRequest(),
@@ -40,7 +40,7 @@ func (p *Path) buildPost() *apiDef {
 func (p *Path) buildGet() *apiDef {
 	return &apiDef{
 		Desciption:  p.spec.Name,
-		Tags:        []string{fmt.Sprintf("v%v", p.spec.Version)},
+		Tags:        []string{fmt.Sprintf("%v", p.spec.Version)},
 		OperationID: fmt.Sprintf("%s_%s", p.spec.Operation, inflection.Singular(p.spec.HTTPResource)),
 		Parameters:  p.createParameters(),
 		Responses:   p.createResponse(),
