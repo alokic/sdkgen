@@ -11,7 +11,7 @@ Generate `openapi 3 spec` from `json` request and responses of `REST APIs`.
 
 ```md
 # install go
-$ brew install go@1.11
+$ brew install go@1.12
 
 # install dep
 $ brew install dep
