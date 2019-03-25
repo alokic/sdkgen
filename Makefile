@@ -54,8 +54,8 @@ clean:														## Clean any stray files formed during make
 
 .PHONY: tag
 tag: checkversion ## Create a new git tag to prepare to build a release
-	git tag -sa $(VERSION) -m "$(VERSION)"
-	@echo "Run git push origin $(VERSION) to push your new tag to GitHub and trigger a travis build."
+	git tag -sa $(GITVERSION) -m "$(GITVERSION)"
+	@echo "Run git push origin $(GITVERSION) to push your new tag to GitHub and trigger a travis build."
 
 
 .PHONY: build
@@ -71,6 +71,10 @@ ctl:		## Builds ctl - golang based utilities for command line processing. try ru
 	@rm ${GOBIN}/ctl  2>/dev/null|| true
 	@env GOARCH=amd64 GOGC=off go build -ldflags="${LDFLAGS}" -i -o ${GOBIN}/ctl ${CMD_FOLDER}/ctl/main.go
 
+.PHONY: sdk
+sdk: ## Builds sdk in a programming language.  syntax: make sdk LANG=python
+
+
 .PHONY: help
 help:  ## Print help
 	@echo "=================================================="
@@ -80,7 +84,7 @@ help:  ## Print help
 
 .PHONY: checkversion 
 checkversion:
-ifeq ($(VERSION),)
-	@echo "Missing VERSION"
+ifeq ($(GITVERSION),)
+	@echo "Missing GITVERSION"
 	@exit 1
 endif

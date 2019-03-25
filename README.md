@@ -5,14 +5,6 @@
 
 Generate `openapi 3 API spec` from `json` request and responses of `REST APIs`.
 
-## Technical Specs
-
-  https://alokic.atlassian.net/wiki/spaces/EN/pages/556957804/Roles+and+Permissions
-
-## Health Check
-
-Standard health check end point: `/report/health`
-
 ## Local Setup
 
 ### Pre-requisites
