@@ -11,6 +11,7 @@ GITCOMMIT=$(shell git rev-parse --short HEAD)
 GITBRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 GITVERSION=$(shell git describe --abbrev=4 --dirty --always --tags)
 LDFLAGS=-s -w -X main.VERSION=${GITVERSION} -X main.GITCOMMIT=${GITCOMMIT} -X main.GITBRANCH=${GITBRANCH}
+LANG=
 
 .PHONY: all
 all: clean fmt test vet linux darwin 	## Builds the project.
@@ -72,8 +73,8 @@ ctl:		## Builds ctl - golang based utilities for command line processing. try ru
 	@env GOARCH=amd64 GOGC=off go build -ldflags="${LDFLAGS}" -i -o ${GOBIN}/ctl ${CMD_FOLDER}/ctl/main.go
 
 .PHONY: sdk
-sdk: ## Builds sdk in a programming language.  syntax: make sdk LANG=python
-
+sdk: lang ## Builds sdk in a programming language.  syntax: make sdk LANG=python
+	openapi-generator generate  -i ${SDKGEN_OUTPUT_PATH}/main.yaml -g ${LANG} -o ${SDKGEN_OUTPUT_PATH}/$(LANG) --enable-post-process-file -c ./lang/${LANG}.json
 
 .PHONY: help
 help:  ## Print help
@@ -86,5 +87,12 @@ help:  ## Print help
 checkversion:
 ifeq ($(GITVERSION),)
 	@echo "Missing GITVERSION"
+	@exit 1
+endif
+
+.PHONY: lang 
+lang:
+ifeq ($(LANG),)
+	@echo "Missing LANG"
 	@exit 1
 endif

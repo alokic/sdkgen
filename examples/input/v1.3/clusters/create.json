@@ -174,12 +174,9 @@
 			}
         },
         "spark_settings": {
-            "custom_config": {}
         },
         "errors": [],
         "datadog_settings":{
-            "datadog_api_token": "",
-            "datadog_app_token": ""
         },
         "spark_s3_package_name": "",
         "zeppelin_s3_package_name": "",

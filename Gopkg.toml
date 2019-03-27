@@ -31,10 +31,6 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/alokic/authorizer"
-
-[[constraint]]
-  branch = "master"
   name = "github.com/alokic/gopkg"
 
 [[constraint]]

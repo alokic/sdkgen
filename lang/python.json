@@ -1,6 +1,0 @@
-{
-    "generateSourceCodeOnly": true,
-    "packageUrl": "https://bitbucket.org/aloks_qubole/sdkgen",
-    "packageName": "qpy",
-    "packageVersion": "2.0"
-}

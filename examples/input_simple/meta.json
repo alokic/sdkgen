@@ -1,0 +1,19 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "%s API",
+        "description": "%s operations, requests and responses",
+        "Version": "%s",
+        "contact": {
+            "name": "API Support",
+            "url": "http://api.qubole.com/support",
+            "email": "support@qubole.com"
+        }
+    },
+    "tags": [
+        "%s"
+    ],
+    "servers": [
+        {"url": "https://api.qubole.com/api"}
+    ]
+}

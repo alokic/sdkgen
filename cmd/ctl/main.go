@@ -14,7 +14,7 @@
 
 package main
 
-import "github.com/alokic/authorizer/cmd/ctl/cmd"
+import "github.com/alokic/sdkgen/cmd/ctl/cmd"
 
 func main() {
 	cmd.Execute()

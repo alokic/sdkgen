@@ -11,41 +11,15 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:d5b576d502373f81f3b4ea4bdcd0708514f63e649d55cee9ca377c61bed24c7a"
-  name = "github.com/alokic/authorizer"
-  packages = [
-    "app",
-    "app/postgres",
-    "app/proto",
-    "cmd/ctl/cmd",
-  ]
-  pruneopts = "UT"
-  revision = "78558fe496b9c15c9028434177003eacb3aff015"
-
-[[projects]]
-  branch = "master"
-  digest = "1:1cc5b647580a3b48dc3819084c860c2f8c7f8c6e7ec45e2f12d16da95ec8c58c"
+  digest = "1:a25bf69f5ad40affc890e618169cab8cdffc634a66708285cae69b1526ea9193"
   name = "github.com/alokic/gopkg"
   packages = [
-    "auth",
-    "contextutils",
-    "gid",
-    "httputils",
-    "sql/v2",
-    "stringutils",
-    "timeutils",
+    "config/v2",
+    "structutils",
     "typeutils",
   ]
   pruneopts = "UT"
   revision = "9b2374734e4dd6416701f4b201ed072b579c0c6d"
-
-[[projects]]
-  digest = "1:76dc72490af7174349349838f2fe118996381b31ea83243812a97e5a0fd5ed55"
-  name = "github.com/dgrijalva/jwt-go"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e"
-  version = "v3.2.0"
 
 [[projects]]
   digest = "1:abeb38ade3f32a92943e5be54f55ed6d6e3b6602761d74b4aab4c9dd45c18abd"
@@ -70,37 +44,6 @@
   pruneopts = "UT"
   revision = "07c9b44f60d7ffdfb7d8efe1ad539965737836dc"
   version = "v0.4.0"
-
-[[projects]]
-  digest = "1:4652941215f23c7ad6546bab86964c72248a1134baa53f0df618661344ba5cac"
-  name = "github.com/gogo/protobuf"
-  packages = [
-    "gogoproto",
-    "proto",
-    "protoc-gen-gogo/descriptor",
-  ]
-  pruneopts = "UT"
-  revision = "ba06b47c162d49f2af050fb4c75bcbc86a159d5c"
-  version = "v1.2.1"
-
-[[projects]]
-  digest = "1:38ec74012390146c45af1f92d46e5382b50531247929ff3a685d2b2be65155ac"
-  name = "github.com/gomodule/redigo"
-  packages = [
-    "internal",
-    "redis",
-  ]
-  pruneopts = "UT"
-  revision = "9c11da706d9b7902c6da69c592f75637793fe121"
-  version = "v2.0.0"
-
-[[projects]]
-  digest = "1:ca59b1175189b3f0e9f1793d2c350114be36eaabbe5b9f554b35edee1de50aea"
-  name = "github.com/gorilla/mux"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "a7962380ca08b5a188038c69871b8d3fbdf31e89"
-  version = "v1.7.0"
 
 [[projects]]
   digest = "1:c0d19ab64b32ce9fe5cf4ddceba78d5bc9807f0016db6b1183599da3dcc24d10"
@@ -138,34 +81,12 @@
   revision = "04140366298a54a039076d798123ffa108fff46c"
 
 [[projects]]
-  digest = "1:6c41d4f998a03b6604227ccad36edaed6126c397e5d78709ef4814a1145a6757"
-  name = "github.com/jmoiron/sqlx"
-  packages = [
-    ".",
-    "reflectx",
-  ]
-  pruneopts = "UT"
-  revision = "d161d7a76b5661016ad0b085869f77fd410f3e6a"
-  version = "v1.2.0"
-
-[[projects]]
   branch = "master"
   digest = "1:a64e323dc06b73892e5bb5d040ced475c4645d456038333883f58934abbf6f72"
   name = "github.com/kr/logfmt"
   packages = ["."]
   pruneopts = "UT"
   revision = "b84e30acd515aadc4b783ad4ff83aff3299bdfe0"
-
-[[projects]]
-  digest = "1:8ef506fc2bb9ced9b151dafa592d4046063d744c646c1bbe801982ce87e4bc24"
-  name = "github.com/lib/pq"
-  packages = [
-    ".",
-    "oid",
-  ]
-  pruneopts = "UT"
-  revision = "4ded0e9383f75c197b3a2aaa6d590ac52df6fd79"
-  version = "v1.0.0"
 
 [[projects]]
   digest = "1:c568d7727aa262c32bdf8a3f7db83614f7af0ed661474b24588de635c20024c7"
@@ -294,11 +215,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/alioygur/godash",
-    "github.com/alokic/authorizer/app/postgres",
-    "github.com/alokic/authorizer/cmd/ctl/cmd",
-    "github.com/alokic/gopkg/auth",
-    "github.com/alokic/gopkg/sql/v2",
-    "github.com/alokic/gopkg/stringutils",
+    "github.com/alokic/gopkg/config/v2",
     "github.com/go-kit/kit/log",
     "github.com/jinzhu/inflection",
     "github.com/mitchellh/go-homedir",
