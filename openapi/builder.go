@@ -32,8 +32,8 @@ func (b *Builder) Meta() (*Builder, error) {
 
 	b.oapi.OpenAPIVersion = typeutils.ToStr(b.Spec.Meta["openapi"])
 	b.oapi.Info = &info{
-		Title:       fmt.Sprintf(typeutils.ToStr(inf["title"]), inflection.Singular(stringutils.ToCamelCase(b.Spec.HTTPResource))),
-		Description: fmt.Sprintf(typeutils.ToStr(inf["description"]), inflection.Singular(stringutils.ToCamelCase(b.Spec.HTTPResource))),
+		Title:       b.title(),
+		Description: b.description(),
 		Version:     b.version(),
 		Contact:     inf["contact"].(map[string]interface{}),
 	}
@@ -89,6 +89,14 @@ func (b *Builder) toServer() []map[string]interface{} {
 
 func (b *Builder) version() string {
 	return fmt.Sprintf("%v", b.Spec.Version)
+}
+
+func (b *Builder) title() string {
+	return inflection.Singular(stringutils.ToCamelCase(b.Spec.HTTPResource)) + " " + "API"
+}
+
+func (b *Builder) description() string {
+	return inflection.Singular(stringutils.ToCamelCase(b.Spec.HTTPResource)) + " " + "Operations, requests and responses"
 }
 
 func scope(op, resource string) string {

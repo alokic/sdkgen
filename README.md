@@ -35,24 +35,24 @@ For macOS -> https://docs.docker.com/docker-for-mac/install/
 
 3. Generates `openapi` specs
 
-   In following example, `openapi` specs for `jsons` in `./examples/input` are generated in `./examples/out`.
+   In following example, `openapi` specs for `jsons` in `./examples/inputs/nested` are generated in `./examples/out`.
 
       ```bash
-      docker run -v ${PWD}/examples:/examples sdkgen  openapi -i /examples/input -o /examples/output/openapi
+      docker run -v ${PWD}/examples:/examples sdkgen  openapi -i /examples/inputs/nested -o /tmp/output/openapi
       ```
 
 4. Generates SDK
 
-   In following example `sdk` in `python` is generated in `./examples/output/sdk/python` directory from `./examples/output/openapi/main.yaml` generated in step 7.
+   In following example `sdk` in `python` is generated in `/tmp/output/sdk/python` directory from `/tmp/output/openapi/main.yaml` generated in step 7.
 
       ```bash
-       docker run -v ${PWD}/examples:/examples sdkgen  sdk -i /examples/output/openapi/main.yaml -o /examples/output/sdk -g python
+       docker run -v ${PWD}/examples:/examples sdkgen  sdk -i /tmp/output/openapi/main.yaml -o /tmp/output/sdk -g python
       ```
 
    In following example, `sdk` is generated with `configs` defined in `./examples/config/python.json`.
 
       ```bash
-       docker run -v ${PWD}/examples:/examples sdkgen  sdk -i /examples/output/openapi/main.yaml -o /examples/output/sdk -g python -c /examples/config/python.json
+       docker run -v ${PWD}/examples:/examples sdkgen  sdk -i /tmp/output/openapi/main.yaml -o /tmp/output/sdk -g python -c /examples/config/python.json
       ```
 
 ## Local Setup
@@ -121,27 +121,27 @@ If you are new to `golang` then,
 
 7. Generates `openapi` specs
 
-   In following example, `openapi` specs for `jsons` in `./examples/input` are generated in `./examples/output/openapi`.
+   In following example, `openapi` specs for `jsons` in `./examples/inputs/nested` are generated in `/tmp/output/openapi`.
 
       ```bash
-      ctl openapi -i ./examples/input -o ./examples/output/openapi
+      ctl openapi -i ./examples/inputs/nested -o /tmp/output/openapi
       ```
 
 8. Generates SDK
 
-   In following example `sdk` in `python` is generated in `./examples/sdk/python` directory from `./examples/output/main.yaml` generated in step 7.
+   In following example `sdk` in `python` is generated in `./examples/sdk/python` directory from `/tmp/output/main.yaml` generated in step 7.
 
       ```bash
-      ctl sdk -i ./examples/output/openapi/main.yaml -o ./examples/output/sdk -g python
+      ctl sdk -i /tmp/output/openapi/main.yaml -o /tmp/output/sdk -g python
       ```
 
    In following example, `sdk` is generated with `configs` defined in `.examples/config/python`.
 
       ```bash
-      ctl sdk -i ./examples/output/openapi/main.yaml -o ./examples/output/sdk -g python -c ./examples/config/python.json
+      ctl sdk -i /tmp/output/openapi/main.yaml -o /tmp/output/sdk -g python -c ./examples/config/python.json
       ```
 
-### tests
+## Tests
 
 ```bash
 make test

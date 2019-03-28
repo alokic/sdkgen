@@ -58,8 +58,8 @@ type component struct {
 	Schemas map[string]*Node `json:"schemas" yaml:"schemas"`
 }
 
-// GetPathURLs returns urls in path
-func (o *OAPI) GetPathURLs() []string {
+// getPathURLs returns urls in path
+func (o *OAPI) getPathURLs() []string {
 	var urls []string
 	for url := range o.Paths {
 		urls = append(urls, url)
@@ -75,4 +75,25 @@ func newComponent() *component {
 
 func newPath(s *Spec) *Path {
 	return &Path{spec: s, ApiDefs: make(map[string]*apiDef)}
+}
+
+// toOpenAPI converts an Spec spec to OpenAPI.
+func create(s *Spec) (*OAPI, error) {
+	b := NewBuilder(s)
+	_, err := b.Meta()
+	if err != nil {
+		return nil, err
+	}
+
+	_, err = b.Path()
+	if err != nil {
+		return nil, err
+	}
+
+	_, err = b.Component()
+	if err != nil {
+		return nil, err
+	}
+
+	return b.Build(), nil
 }

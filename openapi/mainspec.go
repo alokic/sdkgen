@@ -57,7 +57,7 @@ func (m *MainSpec) Build() {
 func (m *MainSpec) buildPaths() {
 	pathFolder := make(map[string]interface{})
 	for _, o := range m.oapiInfo {
-		for _, u := range o.OAPI.GetPathURLs() {
+		for _, u := range o.OAPI.getPathURLs() {
 			pathFolder[u] = map[string]string{"$ref": o.Handler() + "#" + "/paths/" + strings.ReplaceAll(u, "/", "~1")}
 		}
 	}

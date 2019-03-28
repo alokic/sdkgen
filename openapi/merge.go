@@ -1,7 +1,7 @@
 package openapi
 
-// Merge openapis
-func Merge(oapis []*OAPI) *OAPI {
+// merge openapis
+func merge(oapis []*OAPI) *OAPI {
 	if len(oapis) == 0 {
 		return nil
 	}

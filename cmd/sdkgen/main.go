@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	v2config "github.com/alokic/gopkg/config/v2"
+	"github.com/alokic/sdkgen/cmd/sdkgen/spec"
 	"github.com/alokic/sdkgen/openapi"
 	"github.com/go-kit/kit/log"
 	"github.com/pkg/errors"
@@ -92,27 +93,6 @@ func mainSpecPath(folder string) string {
 	return fmt.Sprintf("./%s.yaml", formatOutPath(folder))
 }
 
-// toOpenAPI converts an Spec spec to OpenAPI.
-func toOpenAPI(s *openapi.Spec) (*openapi.OAPI, error) {
-	b := openapi.NewBuilder(s)
-	_, err := b.Meta()
-	if err != nil {
-		return nil, err
-	}
-
-	_, err = b.Path()
-	if err != nil {
-		return nil, err
-	}
-
-	_, err = b.Component()
-	if err != nil {
-		return nil, err
-	}
-
-	return b.Build(), nil
-}
-
 // toMainSpec converts an Spec spec to main.yaml.
 func toMainSpec(oapiInfo []*openapi.OAPIInfo) (*openapi.MainSpec, error) {
 	path := config.InputPath + "/main.json"
@@ -136,19 +116,13 @@ func main() {
 	initializeLogger()
 	initializeConfig()
 
-	specs, err := openapi.ReadSpecs(config.InputPath)
+	specs, err := spec.Read(config.InputPath)
 
 	oapiInfo := []*openapi.OAPIInfo{}
 	for infolder, ss := range specs {
-		os := []*openapi.OAPI{}
+		o, err := openapi.ToOpenAPI(ss...)
+		errlog(err)
 
-		for _, s := range ss {
-			o, err := toOpenAPI(s)
-			errlog(err)
-			os = append(os, o)
-		}
-
-		o := openapi.Merge(os)
 		errlog(writeYaml(o, openAPIPath(infolder)))
 
 		oapiInfo = append(oapiInfo, &openapi.OAPIInfo{
