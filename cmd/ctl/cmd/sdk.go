@@ -60,7 +60,9 @@ var (
 				os.Exit(1)
 			}
 
-			opts := []string{"generate", "-i", sdkOpts.in, "-o", strings.TrimRight(sdkOpts.out, "/") + "/" + sdkOpts.lang, "-g", sdkOpts.lang, "--enable-post-process-file"}
+			os.RemoveAll(sdkOpts.out)
+
+			opts := []string{"generate", "-i", sdkOpts.in, "-o", sdkOpts.sdkOutputPath(), "-g", sdkOpts.lang, "--enable-post-process-file"}
 
 			if sdkOpts.config != "" {
 				opts = append(opts, "-c", sdkOpts.config)
@@ -90,6 +92,10 @@ var (
 		},
 	}
 )
+
+func (s *sdkOpt) sdkOutputPath() string {
+	return strings.TrimRight(sdkOpts.out, "/") + "/" + sdkOpts.lang
+}
 
 func init() {
 	rootCmd.AddCommand(sdkCmd)

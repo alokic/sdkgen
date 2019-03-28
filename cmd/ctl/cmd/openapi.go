@@ -49,6 +49,8 @@ var (
 				os.Exit(1)
 			}
 
+			os.RemoveAll(oaOpts.out)
+
 			commmand := exec.Command("sdkgen", "--in", oaOpts.in, "--out", oaOpts.out)
 			err := commmand.Run()
 
