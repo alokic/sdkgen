@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -12,7 +11,6 @@ import (
 	"github.com/alokic/sdkgen/cmd/sdkgen/spec"
 	"github.com/alokic/sdkgen/openapi"
 	"github.com/go-kit/kit/log"
-	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 )
 
@@ -93,49 +91,26 @@ func mainSpecPath(folder string) string {
 	return fmt.Sprintf("./%s.yaml", formatOutPath(folder))
 }
 
-// toMainSpec converts an Spec spec to main.yaml.
-func toMainSpec(oapiInfo []*openapi.OAPIInfo) (*openapi.MainSpec, error) {
-	path := config.InputPath + "/main.json"
-	f, err := os.Open(path)
-	if err != nil {
-		return nil, errors.Wrap(err, "main.json failed to open")
+func makeOpenAPI() {
+	specs, err := spec.Read(config.InputPath)
+	errlog(err)
+
+	mspec, err := spec.ReadMainSpec(config.InputPath + "/main.json")
+	errlog(err)
+
+	for infolder, ss := range specs {
+		o, err := openapi.ToOpenAPI(ss...)
+		errlog(err)
+		errlog(writeYaml(o, openAPIPath(infolder)))
+
+		mspec.Build(mainSpecPath(infolder), o)
 	}
 
-	js, _ := ioutil.ReadAll(f)
-
-	var m map[string]interface{}
-	json.Unmarshal(js, &m)
-
-	ms := openapi.NewMainSpec(oapiInfo, m)
-	ms.Build()
-
-	return ms, nil
+	writeYaml(mspec, config.OutputPath+"/main.yaml")
 }
 
 func main() {
 	initializeLogger()
 	initializeConfig()
-
-	specs, err := spec.Read(config.InputPath)
-
-	oapiInfo := []*openapi.OAPIInfo{}
-	for infolder, ss := range specs {
-		o, err := openapi.ToOpenAPI(ss...)
-		errlog(err)
-
-		errlog(writeYaml(o, openAPIPath(infolder)))
-
-		oapiInfo = append(oapiInfo, &openapi.OAPIInfo{
-			OAPI: o,
-			Handler: func(infolder string) openapi.FilePathHandler {
-				return func() string {
-					return mainSpecPath(infolder)
-				}
-			}(infolder),
-		})
-	}
-
-	m, err := toMainSpec(oapiInfo)
-	errlog(err)
-	writeYaml(m, config.OutputPath+"/main.yaml")
+	makeOpenAPI()
 }
