@@ -35,10 +35,10 @@ For macOS -> https://docs.docker.com/docker-for-mac/install/
 
 3. Generates `openapi` specs
 
-   In following example, `openapi` specs for `jsons` in `./examples/inputs/nested` are generated in `./examples/out`.
+   In following example, `openapi` specs for `jsons` in `./examples/inputs/nested` are generated in `/tmp/output/openapi`.
 
       ```bash
-      docker run -v ${PWD}/examples:/examples sdkgen  openapi -i /examples/inputs/nested -o /tmp/output/openapi
+      docker run -v ${PWD}/examples:/examples -v /tmp:/tmp sdkgen  openapi -i /examples/inputs/nested -o /tmp/output/openapi
       ```
 
 4. Generates SDK
@@ -46,7 +46,7 @@ For macOS -> https://docs.docker.com/docker-for-mac/install/
    In following example `sdk` in `python` is generated in `/tmp/output/sdk/python` directory from `/tmp/output/openapi/main.yaml` generated in step 7.
 
       ```bash
-       docker run -v ${PWD}/examples:/examples sdkgen  sdk -i /tmp/output/openapi/main.yaml -o /tmp/output/sdk -g python
+       docker run -v ${PWD}/examples:/examples -v /tmp:/tmp sdkgen  sdk -i /tmp/output/openapi/main.yaml -o /tmp/output/sdk -g python
       ```
 
    In following example, `sdk` is generated with `configs` defined in `./examples/config/python.json`.
