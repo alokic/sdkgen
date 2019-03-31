@@ -3,8 +3,8 @@
     "version": "v1.3",
     "http_method": "post",
     "http_resource": "accounts",
-    "operation": "create",
-    "url": "/v1.3/accounts/",
+    "operation": "create_account",
+    "path": "/v1.3/accounts/",
     "query": {},
     "headers": {
         "X-AUTH-TOKEN": "kkjkj",

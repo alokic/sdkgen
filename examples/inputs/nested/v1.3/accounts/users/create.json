@@ -1,10 +1,10 @@
 {
-    "name": "Create Account",
+    "name": "Create User",
     "version": "v1.3",
     "http_method": "patch",
-    "http_resource": "accounts",
-    "operation": "create",
-    "url": "/v1.3/accounts/users",
+    "http_resource": "users",
+    "operation": "create_user",
+    "path": "/v1.3/accounts/users",
     "query": {},
     "headers": {
         "X-AUTH-TOKEN": "kkjkj",

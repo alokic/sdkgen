@@ -30,7 +30,7 @@ func (p *Path) buildPost() *apiDef {
 	return &apiDef{
 		Desciption:  p.spec.Name,
 		Tags:        []string{fmt.Sprintf("%v", p.spec.Version)},
-		OperationID: fmt.Sprintf("%s_%s", p.spec.Operation, inflection.Singular(p.spec.HTTPResource)),
+		OperationID: p.spec.Operation, // fmt.Sprintf("%s_%s", p.spec.Operation, inflection.Singular(p.spec.HTTPResource)),
 		Parameters:  p.createParameters(),
 		Request:     p.createRequest(),
 		Responses:   p.createResponse(),
@@ -41,14 +41,14 @@ func (p *Path) buildGet() *apiDef {
 	return &apiDef{
 		Desciption:  p.spec.Name,
 		Tags:        []string{fmt.Sprintf("%v", p.spec.Version)},
-		OperationID: fmt.Sprintf("%s_%s", p.spec.Operation, inflection.Singular(p.spec.HTTPResource)),
+		OperationID: p.spec.Operation, // fmt.Sprintf("%s_%s", p.spec.Operation, inflection.Singular(p.spec.HTTPResource)),
 		Parameters:  p.createParameters(),
 		Responses:   p.createResponse(),
 	}
 }
 
 func (p *Path) createResponse() map[string]*response {
-	key := fmt.Sprintf("%s%s", strings.Title(p.spec.Operation), inflection.Singular(stringutils.ToCamelCase(p.spec.HTTPResource)))
+	key := fmt.Sprintf("%s%s", inflection.Singular(stringutils.ToCamelCase(p.spec.Operation)), inflection.Singular(stringutils.ToCamelCase(p.spec.HTTPResource)))
 	return map[string]*response{
 		"200": &response{
 			Desciption: "Success response",
@@ -66,7 +66,7 @@ func (p *Path) createResponse() map[string]*response {
 }
 
 func (p *Path) createRequest() *request {
-	key := fmt.Sprintf("%s%s", strings.Title(p.spec.Operation), inflection.Singular(stringutils.ToCamelCase(p.spec.HTTPResource)))
+	key := fmt.Sprintf("%s%s", inflection.Singular(stringutils.ToCamelCase(p.spec.Operation)), inflection.Singular(stringutils.ToCamelCase(p.spec.HTTPResource)))
 	return &request{
 		Content: createContent(fmt.Sprintf("#/components/schemas/%sRequest", key), p.spec.Request),
 	}
@@ -114,7 +114,7 @@ func (p *Path) createParameters() []*parameter {
 }
 
 func (p *Path) extractPathParameters() []string {
-	match := pathExp.FindAllStringSubmatch(p.spec.URL, -1)
+	match := pathExp.FindAllStringSubmatch(p.spec.Path, -1)
 
 	ms := []string{}
 	for _, m := range match {

@@ -70,7 +70,7 @@ func (b *Builder) Component() (*Builder, error) {
 // Path builds component.
 func (b *Builder) Path() (*Builder, error) {
 	b.path.build()
-	b.oapi.Paths = map[string]interface{}{b.Spec.URL: b.path.ApiDefs}
+	b.oapi.Paths = map[string]interface{}{b.Spec.Path: b.path.ApiDefs}
 	return b, nil
 }
 

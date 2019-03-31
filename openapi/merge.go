@@ -23,10 +23,10 @@ func merge(oapis []*OAPI) *OAPI {
 }
 
 func mergePaths(source, dest *OAPI) *OAPI {
-	url, method, apidef := urlMethodAPIDef(source.Paths)
-	m, ok := dest.Paths[url].(map[string]interface{})
+	path, method, apidef := urlMethodAPIDef(source.Paths)
+	m, ok := dest.Paths[path].(map[string]interface{})
 	if !ok {
-		dest.Paths[url] = map[string]interface{}{method: apidef}
+		dest.Paths[path] = map[string]interface{}{method: apidef}
 	} else {
 		m[method] = apidef
 	}
@@ -43,10 +43,10 @@ func mergeSchema(source, dest *OAPI) *OAPI {
 }
 
 func urlMethodAPIDef(paths map[string]interface{}) (string, string, *apiDef) {
-	for url, path := range paths {
-		pm := path.(map[string]*apiDef)
+	for path, apid := range paths {
+		pm := apid.(map[string]*apiDef)
 		for httpmethod, apidef := range pm {
-			return url, httpmethod, apidef
+			return path, httpmethod, apidef
 		}
 	}
 	return "", "", nil

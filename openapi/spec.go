@@ -7,7 +7,7 @@ type Spec struct {
 	HTTPMethod      string                 `json:"http_method"`
 	HTTPResource    string                 `json:"http_resource"`
 	Operation       string                 `json:"operation"`
-	URL             string                 `json:"url"`
+	Path            string                 `json:"path"`
 	Headers         map[string]interface{} `json:"headers"`
 	Query           map[string]interface{} `json:"query"`
 	Request         interface{}            `json:"request"`

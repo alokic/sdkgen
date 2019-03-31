@@ -3,8 +3,8 @@
     "version": "v2.0",
     "http_method": "get",
     "http_resource": "accounts",
-    "operation": "get",
-    "url": "/v2/accounts/{user_id}/1",
+    "operation": "get_account",
+    "path": "/v2/accounts/{user_id}/1",
     "query": {
         "id": 565
     },

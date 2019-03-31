@@ -74,6 +74,9 @@ var (
 func init() {
 	rootCmd.AddCommand(openapiCmd)
 
-	openapiCmd.Flags().StringVarP(&oaOpts.in, "in", "i", defaultInputPath, "path where json specs are kept (required).")
-	openapiCmd.Flags().StringVarP(&oaOpts.out, "out", "o", defaultOutputPath, "output path (required).")
+	openapiCmd.Flags().StringVarP(&oaOpts.in, "in", "i", defaultInputPath, "folder where json specs are kept (required).")
+	openapiCmd.MarkFlagRequired("in")
+
+	openapiCmd.Flags().StringVarP(&oaOpts.out, "out", "o", defaultOutputPath, "output folder (required).")
+	openapiCmd.MarkFlagRequired("out")
 }

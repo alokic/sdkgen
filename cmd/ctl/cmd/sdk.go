@@ -101,7 +101,10 @@ func init() {
 	rootCmd.AddCommand(sdkCmd)
 
 	sdkCmd.Flags().StringVarP(&sdkOpts.in, "in", "i", defaultInputPath, "path of openapi YAML file. (required).")
+	sdkCmd.MarkFlagRequired("in")
+
 	sdkCmd.Flags().StringVarP(&sdkOpts.out, "out", "o", defaultOutputPath, "output path where sdk will be generated(required).")
+	sdkCmd.MarkFlagRequired("out")
 
 	sdkCmd.Flags().StringVarP(&sdkOpts.lang, "lang", "g", "", "language in which sdk should be generated(required).")
 	sdkCmd.MarkFlagRequired("lang")

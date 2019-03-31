@@ -1,10 +1,10 @@
 {
     "name": "Create Account",
-    "version": "v1.3",
+    "version": "v1.0",
     "http_method": "post",
     "http_resource": "accounts",
     "operation": "create_account",
-    "path": "/v1.3/accounts/",
+    "path": "/v2/accounts/",
     "query": {},
     "headers": {
         "X-AUTH-TOKEN": "kkjkj",
@@ -46,10 +46,7 @@
             "error_message": "Access Denied"
         }
     },
-    "required_request": [
-        "account",
-        "account.aws_region"
-    ],
+    "required_request": [],
     "required_query": [],
     "required_headers": [
         "X-AUTH-TOKEN",

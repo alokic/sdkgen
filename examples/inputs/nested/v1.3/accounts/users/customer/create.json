@@ -1,10 +1,10 @@
 {
-    "name": "Create Account",
+    "name": "Create Customer",
     "version": "v1.3",
     "http_method": "put",
-    "http_resource": "accounts",
-    "operation": "create",
-    "url": "/v1.3/accounts/users/123/customers/12",
+    "http_resource": "customers",
+    "operation": "create_customer",
+    "path": "/v1.3/accounts/users/123/customers/12",
     "query": {},
     "headers": {
         "X-AUTH-TOKEN": "kkjkj",

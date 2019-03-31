@@ -3,8 +3,8 @@
     "version": "v1.3",
     "http_method": "post",
     "http_resource": "clusters",
-    "operation": "create",
-    "url": "/v1.3/clusters",
+    "operation": "create_cluster",
+    "path": "/v1.3/clusters",
     "query": {},
     "headers": {
         "X-AUTH-TOKEN": "kkjkj",
