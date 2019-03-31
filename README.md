@@ -17,12 +17,16 @@ For macOS -> https://docs.docker.com/docker-for-mac/install/
 
 1. Git clone the repo.
 
-    ```bash
+```bash
+
     mkdir -p go
+
     cd go
+
     git clone git@github.com:alokic/sdkgen.git
+
     cd sdkgen
-    ```
+```
 
 2. Build docker image
 
