@@ -18,19 +18,19 @@ For macOS -> https://docs.docker.com/docker-for-mac/install/
 1. Git clone the repo.
 
     ```bash
-    mkdir -p go
+        mkdir -p go
 
-    cd go
+        cd go
 
-    git clone git@github.com:alokic/sdkgen.git
+        git clone git@github.com:alokic/sdkgen.git
 
-    cd sdkgen
+        cd sdkgen
     ```
 
 2. Build docker image
 
     ```bash
-    docker build -t sdkgen .
+        docker build -t sdkgen .
     ```
 
 3. Generates `openapi` specs
@@ -38,7 +38,7 @@ For macOS -> https://docs.docker.com/docker-for-mac/install/
    In following example, `openapi` specs for `jsons` in `./examples/inputs/nested` are generated in `/tmp/openapi`.
 
       ```bash
-      docker run -v ${PWD}/examples:/examples -v /tmp:/tmp sdkgen  openapi -i /examples/inputs/nested -o /tmp/openapi
+        docker run -v ${PWD}/examples:/examples -v /tmp:/tmp sdkgen  openapi -i /examples/inputs/nested -o /tmp/openapi
       ```
 
 4. Generates SDK
@@ -46,13 +46,13 @@ For macOS -> https://docs.docker.com/docker-for-mac/install/
    In following example `sdk` in `python` is generated in `/tmp/sdk/python` directory from `/tmp/openapi/main.yaml` generated in step 7.
 
       ```bash
-       docker run -v ${PWD}/examples:/examples -v /tmp:/tmp sdkgen  sdk -i /tmp/openapi/main.yaml -o /tmp/sdk -g python
+        docker run -v ${PWD}/examples:/examples -v /tmp:/tmp sdkgen  sdk -i /tmp/openapi/main.yaml -o /tmp/sdk -g python
       ```
 
    In following example, `sdk` is generated with `configs` defined in `./examples/config/python.json`.
 
       ```bash
-       docker run -v ${PWD}/examples:/examples sdkgen  sdk -i /tmp/openapi/main.yaml -o /tmp/sdk -g python -c /examples/config/python.json
+        docker run -v ${PWD}/examples:/examples sdkgen  sdk -i /tmp/openapi/main.yaml -o /tmp/sdk -g python -c /examples/config/python.json
       ```
 
 ## Local Setup
@@ -116,7 +116,7 @@ If you are new to `golang` then,
 6. Help
 
    ```bash
-   ctl --help
+    ctl --help
    ```
 
 7. Generates `openapi` specs
