@@ -18,7 +18,7 @@ For macOS -> https://docs.docker.com/docker-for-mac/install/
 1. Git clone the repo.
 
     ```bash
-
+        # create folder for go project
         mkdir -p go
 
         cd go
