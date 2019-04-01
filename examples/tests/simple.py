@@ -25,7 +25,7 @@ x_auth_token = 'x_auth_token' # str | X-AUTH-TOKEN
 ######### CLUSTER CREATION START ############
 request_body = {
       "label": [
-      "spark-cluster-3"
+      "spark-cluster-2"
   ],
   "spark_version": "2.3",
   "ec2_settings": {
