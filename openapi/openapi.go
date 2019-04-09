@@ -41,7 +41,8 @@ type parameter struct {
 }
 
 type request struct {
-	Content map[string]interface{} `json:"content" yaml:"content"`
+	Content  map[string]interface{} `json:"content" yaml:"content"`
+	Required bool                   `json:"required" yaml:"required"`
 }
 
 type response struct {

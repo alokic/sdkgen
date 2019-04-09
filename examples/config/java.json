@@ -1,0 +1,4 @@
+{
+    "useRxJava2": true,
+    "library": "retrofit2"
+}

@@ -68,7 +68,8 @@ func (p *Path) createResponse() map[string]*response {
 func (p *Path) createRequest() *request {
 	key := fmt.Sprintf("%s%s", inflection.Singular(stringutils.ToCamelCase(p.spec.Operation)), inflection.Singular(stringutils.ToCamelCase(p.spec.HTTPResource)))
 	return &request{
-		Content: createContent(fmt.Sprintf("#/components/schemas/%sRequest", key), p.spec.Request),
+		Content:  createContent(fmt.Sprintf("#/components/schemas/%sRequest", key), p.spec.Request),
+		Required: true,
 	}
 }
 
