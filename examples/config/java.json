@@ -1,4 +1,3 @@
 {
-    "useRxJava2": true,
-    "library": "retrofit2"
+    "library": "okhttp-gson"
 }

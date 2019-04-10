@@ -50,4 +50,4 @@ try:
     api_response = api_instance.create_cluster(x_auth_token, user_agent, request_body=request_body)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling V13Api->create_account: %s\n" % e)
+    print("Exception when calling V13Api->create_cluster: %s\n" % e)
