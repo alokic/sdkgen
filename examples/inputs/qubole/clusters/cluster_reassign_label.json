@@ -1,0 +1,31 @@
+{
+  "name": "Reassign Cluster Label",
+  "version": "v1.3",
+  "http_method": "put",
+  "http_resource": "clusters",
+  "operation": "",
+  "path": "/api/v1.3/clusters/reassign-label",
+  "query": {},
+  "headers": {
+    "X-AUTH-TOKEN": "kkjkj",
+    "User-Agent": "SDK"
+  },
+  "request": {
+    "label" : "",
+    "destination_cluster" : 10
+  },
+  "response": {
+  },
+  "error": {
+    "error": {
+      "error_code": 403,
+      "error_message": "Access Denied"
+    }
+  },
+  "required_request": [],
+  "required_query": [],
+  "required_headers": [
+    "X-AUTH-TOKEN",
+    "User-Agent"
+  ]
+}

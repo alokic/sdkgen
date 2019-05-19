@@ -1,0 +1,30 @@
+{
+  "name": "Start or terminate cluster",
+  "version": "v1.3",
+  "http_method": "put",
+  "http_resource": "clusters",
+  "operation": "cluster_start_terminate",
+  "path": "/api/v1.3/clusters/{id}/state",
+  "query": {},
+  "headers": {
+    "X-AUTH-TOKEN": "kkjkj",
+    "User-Agent": "mozilla"
+  },
+  "request": {
+    "state" : ""
+  },
+  "response": {
+  },
+  "error": {
+    "error": {
+      "error_code": 403,
+      "error_message": "Access Denied"
+    }
+  },
+  "required_request": [],
+  "required_query": [],
+  "required_headers": [
+    "X-AUTH-TOKEN",
+    "User-Agent"
+  ]
+}

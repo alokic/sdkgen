@@ -1,0 +1,32 @@
+{
+  "name": "Remove node from cluster",
+  "version": "v1.3",
+  "http_method": "delete",
+  "http_resource": "clusters",
+  "operation": "cluster_remove_node",
+  "path": "/api/v1.3/clusters/{id}/nodes",
+  "query": {
+    "id" : 10
+  },
+  "headers": {
+    "X-AUTH-TOKEN": "kkjkj",
+    "User-Agent": "mozilla"
+  },
+  "request": {
+    "private_dns" : ""
+  },
+  "response": {
+  },
+  "error": {
+    "error": {
+      "error_code": 403,
+      "error_message": "Access Denied"
+    }
+  },
+  "required_request": [],
+  "required_query": [],
+  "required_headers": [
+    "X-AUTH-TOKEN",
+    "User-Agent"
+  ]
+}

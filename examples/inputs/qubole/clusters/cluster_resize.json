@@ -1,0 +1,35 @@
+{
+  "name": "Resize cluster",
+  "version": "v1.3",
+  "http_method": "put",
+  "http_resource": "clusters",
+  "operation": "resize_cluster",
+  "path": "/api/v1.3/clusters/{id}",
+  "query": {
+    "id" : 10
+  },
+  "headers": {
+    "X-AUTH-TOKEN": "kkjkj",
+    "User-Agent": "SDK"
+  },
+  "request": {
+    "node_configuration": {
+      "max_nodes" : 10,
+      "push" : true
+    }
+  },
+  "response": {
+  },
+  "error": {
+    "error": {
+      "error_code": 403,
+      "error_message": "Access Denied"
+    }
+  },
+  "required_request": [],
+  "required_query": [],
+  "required_headers": [
+    "X-AUTH-TOKEN",
+    "User-Agent"
+  ]
+}

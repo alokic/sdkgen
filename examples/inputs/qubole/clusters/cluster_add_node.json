@@ -1,0 +1,31 @@
+{
+  "name": "Add node to cluster",
+  "version": "v1.3",
+  "http_method": "post",
+  "http_resource": "clusters",
+  "operation": "cluster_add_node",
+  "path": "/api/v1.3/clusters/{id}/nodes",
+  "query": {
+    "id" : 10
+  },
+  "headers": {
+    "X-AUTH-TOKEN": "kkjkj",
+    "User-Agent": "SDK"
+  },
+  "request": {
+  },
+  "response": {
+  },
+  "error": {
+    "error": {
+      "error_code": 403,
+      "error_message": "Access Denied"
+    }
+  },
+  "required_request": [],
+  "required_query": [],
+  "required_headers": [
+    "X-AUTH-TOKEN",
+    "User-Agent"
+  ]
+}
