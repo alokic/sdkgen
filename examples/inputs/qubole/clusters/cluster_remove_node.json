@@ -16,6 +16,40 @@
     "private_dns" : ""
   },
   "response": {
+    "command_source": "",
+    "pid": null,
+    "qlog": null,
+    "command_type": "ClusterManageCommand",
+    "id": 10,
+    "saved_query_mutable_id": null,
+    "user_id": 3635,
+    "label": "opentsdb2",
+    "template": "generic",
+    "qbol_session_id": 40375,
+    "progress": 0,
+    "can_notify": false,
+    "status": "waiting",
+    "account_id": 1612,
+    "start_time": null,
+    "meta_data": {
+      "results_resource": "commands/277344/results",
+      "logs_resource": "commands/277344/logs"
+    },
+    "num_result_dir": -1,
+    "submit_time": 1432291974,
+    "path": "/tmp/2015-05-22/1612/277344",
+    "pool": null,
+    "resolved_macros": null,
+    "name": null,
+    "created_at": "2015-05-22T10:52:54Z",
+    "command": {
+      "action": "remove",
+      "private_dns": "ip-10-234-18-139.ec2.internal",
+      "cluster_inst_id": 23528,
+      "parameters": null
+    },
+    "end_time": null,
+    "timeout": null
   },
   "error": {
     "error": {

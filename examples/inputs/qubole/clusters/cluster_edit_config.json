@@ -160,7 +160,7 @@
       "enable_presto": false,
       "custom_config": {}
     },
-    "id": 116,
+    "id": 10,
     "state": "DOWN",
     "node_configuration": {
       "max_nodes": 10,
@@ -188,8 +188,6 @@
       "fernet_key": "rsHS7m/xJa7pkNtLpvwcGIFbkNsnSWHHnro+6ZWSsjo=",
       "overrides": "core.dag_concurrency=32"
     }
-  },
-  "response": {
   },
   "error": {
     "error": {

@@ -15,6 +15,49 @@
   "request": {
   },
   "response": {
+    "state": "UP",
+    "last_health_check_action_at": null,
+    "start_at": "2014-04-25T14:08:28Z",
+    "down_at": null,
+    "cluster_id": 10,
+    "terminate_reason": null,
+    "nodes": [
+      {
+        "instance_type": "m1.large",
+        "ec2_instance_id": "i-abcdefdd",
+        "is_spot_instance": false,
+        "up_time": "2014-04-25T14:06:02Z",
+        "private_ip": "domU-11-22-33-44-55-02.compute-1.internal",
+        "last_seen_time": "2014-04-25T14:06:02Z",
+        "role": "master",
+        "down_time": null,
+        "hostname": "ec2-55-66-33-120.compute-1.amazonaws.com"
+      },
+      {
+        "instance_type": "m1.xlarge",
+        "ec2_instance_id": "i-abcdef54",
+        "is_spot_instance": false,
+        "up_time": "2014-04-25T14:06:02Z",
+        "private_ip": "ip-11-22-33-44.ec2.internal",
+        "last_seen_time": "2014-04-25T14:06:02Z",
+        "role": "node0001",
+        "down_time": null,
+        "hostname": "ec2-55-88-44-120.compute-1.amazonaws.com"
+      },
+      {
+        "instance_type": "m1.xlarge",
+        "ec2_instance_id": "i-abcdef55",
+        "is_spot_instance": false,
+        "up_time": "2014-04-25T14:06:02Z",
+        "private_ip": "ip-11-66-111-222.ec2.internal",
+        "last_seen_time": "2014-04-25T14:06:02Z",
+        "role": "node0002",
+        "down_time": null,
+        "hostname": "ec2-55-222-111-100.compute-1.amazonaws.com"
+      }
+    ],
+    "last_health_check_action": null,
+    "config_id": 2196
   },
   "error": {
     "error": {

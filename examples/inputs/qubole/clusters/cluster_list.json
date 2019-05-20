@@ -11,8 +11,169 @@
     "User-Agent": "SDK"
   },
   "request": {
+    "page" : 1,
+    "per_page" : 10
   },
   "response": {
+    "paging_info": {
+      "next_page": 2,
+      "previous_page": null,
+      "per_page": 10
+    },
+    "clusters": [
+      {
+        "state": "DOWN",
+        "id": 2166,
+        "spark_version": "1.5.1",
+        "presto_version": "0.142",
+        "label": [
+          "CustomerJobs",
+          "malay-test",
+          "abc-13"
+        ],
+        "disallow_cluster_termination": false,
+        "force_tunnel": false,
+        "enable_ganglia_monitoring": false,
+        "node_bootstrap_file": "node_bootstrap.sh",
+        "tunnel_server_ip": null,
+        "ec2_settings": {
+          "aws_preferred_availability_zone": "us-west-1b",
+          "aws_region": "us-west-1",
+          "compute_validated": true,
+          "vpc_id": null,
+          "subnet_id": null,
+          "bastion_node_public_dns": null,
+          "bastion_node_port": null,
+          "bastion_node_user": null,
+          "master_elastic_ip": null,
+          "instance_tenancy": null,
+          "compute_secret_key": "",
+          "compute_access_key": "AKIAIYKZ35HYKLGDZC5Q",
+          "use_account_compute_creds": false
+        },
+        "hadoop_settings": {
+          "use_hbase": false,
+          "use_spark": false,
+          "custom_config": null,
+          "use_hadoop2": true,
+          "use_qubole_placement_policy": false,
+          "is_ha": null,
+          "enable_rubix": false,
+          "node_bootstrap_timeout": 0,
+          "fairscheduler_settings": {
+            "default_pool": null,
+            "fairscheduler_config_xml": "<allocations>\n  <fairSharePreemptionTimeout>60</fairSharePreemptionTimeout>\n</allocations>"
+          }
+        },
+        "node_configuration": {
+          "master_instance_type": "c3.2xlarge",
+          "slave_instance_type": "m1.xlarge",
+          "initial_nodes": 1,
+          "max_nodes": 3,
+          "idle_cluster_timeout": null,
+          "node_base_cooldown_period": null,
+          "node_spot_cooldown_period": null,
+          "child_hs2_cluster_id": null,
+          "parent_cluster_id": null,
+          "slave_request_type": "ondemand",
+          "cluster_name": "qbol_acc1_cl2166"
+        },
+        "security_settings": {
+          "encrypted_ephemerals": false
+        },
+        "presto_settings": {
+          "enable_presto": true,
+          "custom_config": null
+        },
+        "spark_settings": {
+          "custom_config": ""
+        },
+        "errors": [],
+        "datadog_settings": {
+          "datadog_api_token": "",
+          "datadog_app_token": ""
+        },
+        "spark_s3_package_name": null,
+        "zeppelin_s3_package_name": null,
+        "engine_config": {},
+        "zeppelin_interpreter_mode": "legacy"
+      },
+      {
+        "state": "DOWN",
+        "id": 2535,
+        "spark_version": "1.5.1",
+        "presto_version": null,
+        "label": [
+          "hbase_test"
+        ],
+        "disallow_cluster_termination": true,
+        "force_tunnel": true,
+        "enable_ganglia_monitoring": true,
+        "node_bootstrap_file": "node_bootstrap.sh",
+        "tunnel_server_ip": null,
+        "ec2_settings": {
+          "aws_preferred_availability_zone": "us-east-1a",
+          "aws_region": "us-east-1",
+          "compute_validated": true,
+          "vpc_id": null,
+          "subnet_id": null,
+          "bastion_node_public_dns": null,
+          "bastion_node_port": null,
+          "bastion_node_user": null,
+          "master_elastic_ip": null,
+          "instance_tenancy": null,
+          "compute_secret_key": "",
+          "compute_access_key": "AKIAJ4HY7NQ7OKGUIMIQ",
+          "use_account_compute_creds": false
+        },
+        "hadoop_settings": {
+          "use_hbase": true,
+          "use_spark": false,
+          "custom_config": "mapred.hustler.nodes.lease.period=180000\nhustler.resource.checker.update.interval-ms=5000\nhustler.resource.checker.min.resourcerequest.ignore-ms=10000\nmapred.job.hustler.enabled=true\nmapred.hustler.downscaling.sim plex.enable=true",
+          "use_hadoop2": true,
+          "use_qubole_placement_policy": false,
+          "is_ha": null,
+          "enable_rubix": false,
+          "node_bootstrap_timeout": 0,
+          "fairscheduler_settings": {
+            "default_pool": null
+          }
+        },
+        "node_configuration": {
+          "master_instance_type": "m1.large",
+          "slave_instance_type": "m2.2xlarge",
+          "initial_nodes": 2,
+          "max_nodes": 2,
+          "idle_cluster_timeout": null,
+          "node_base_cooldown_period": null,
+          "node_spot_cooldown_period": null,
+          "child_hs2_cluster_id": null,
+          "parent_cluster_id": null,
+          "slave_request_type": "ondemand",
+          "cluster_name": "qbol_acc1_cl2535"
+        },
+        "security_settings": {
+          "encrypted_ephemerals": false,
+          "ssh_public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmh/aq3toOd7Qa4dltbLKvumQKladMw2gZ6GGFDil0PpFS+GM23ggd5CVtPzNR47v+m31K7q3SNVRcKtIJ57J7aAIJfJYaaSnFpZMIu5MfnO4tqGnplsSqKu5PDYfAfsiTJ59VHZbhmRjKUuCEef0aNqi8U8+agHBCzwQmHgaz7uSm2KfqyEFQWWLIX/qxvPxiA/X8ug/XTtgGcDZDecyyse+HYRX5xTtzisjDz5F/KRGGJvXQrSEN+zqGpgHD8eoRRFnMxOIaJD6yBMiB97Da+iH0xsFyfNyMmRROzyI5PhIiyZIUXvjaC/a3c3EVexntnPe1oS0pPs4fiD21HLjT qubole@qubole-HP-240-G1-Notebook-PC"
+        },
+        "presto_settings": {
+          "enable_presto": false,
+          "custom_config": null
+        },
+        "spark_settings": {
+          "custom_config": ""
+        },
+        "errors": [],
+        "datadog_settings": {
+          "datadog_api_token": null,
+          "datadog_app_token": null
+        },
+        "spark_s3_package_name": null,
+        "zeppelin_s3_package_name": null,
+        "engine_config": {},
+        "zeppelin_interpreter_mode": "legacy"
+      }
+    ]
   },
   "error": {
     "error": {

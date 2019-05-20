@@ -15,6 +15,7 @@
   "request": {
   },
   "response": {
+    "message": "Successfully deleted cluster with id 10."
   },
   "error": {
     "error": {

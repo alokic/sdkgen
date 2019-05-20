@@ -189,8 +189,6 @@
       "overrides": "core.dag_concurrency=32"
     }
   },
-  "response": {
-  },
   "error": {
     "error": {
       "error_code": 403,

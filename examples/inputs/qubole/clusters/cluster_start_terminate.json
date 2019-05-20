@@ -5,15 +5,18 @@
   "http_resource": "clusters",
   "operation": "cluster_start_terminate",
   "path": "/api/v1.3/clusters/{id}/state",
-  "query": {},
+  "query": {
+    "id" : 10
+  },
   "headers": {
     "X-AUTH-TOKEN": "kkjkj",
     "User-Agent": "mozilla"
   },
   "request": {
-    "state" : ""
+    "state" : "start"
   },
   "response": {
+    "message":"Starting cluster with id 10."
   },
   "error": {
     "error": {

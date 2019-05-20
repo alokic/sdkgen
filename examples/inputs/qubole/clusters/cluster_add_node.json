@@ -13,8 +13,43 @@
     "User-Agent": "SDK"
   },
   "request": {
+    "node_count" : 2
   },
   "response": {
+    "submit_time": 1431419457,
+    "status": "waiting",
+    "saved_query_mutable_id": null,
+    "command_source": "",
+    "progress": 0,
+    "resolved_macros": null,
+    "end_time": null,
+    "start_time": null,
+    "command": {
+      "cluster_inst_id": 17991,
+      "parameters": null,
+      "action": "add",
+      "private_dns": null
+    },
+    "pid": null,
+    "qbol_session_id": 80475,
+    "command_type": "ClusterManageCommand",
+    "created_at": "2015-05-12T08:30:57Z",
+    "account_id": 14,
+    "name": null,
+    "timeout": null,
+    "template": "generic",
+    "label": "Hadoop",
+    "user_id": 1432,
+    "pool": null,
+    "num_result_dir": -1,
+    "qlog": null,
+    "path": "/tmp/2015-05-12/14/353181",
+    "id": 10,
+    "meta_data": {
+      "results_resource": "commands/10/results",
+      "logs_resource": "commands/10/logs"
+    },
+    "can_notify": false
   },
   "error": {
     "error": {

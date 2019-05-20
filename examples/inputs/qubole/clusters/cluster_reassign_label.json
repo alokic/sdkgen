@@ -11,10 +11,11 @@
     "User-Agent": "SDK"
   },
   "request": {
-    "label" : "",
+    "label" : "<cluster_label>",
     "destination_cluster" : 10
   },
   "response": {
+    "message":"Reassigned cluster label pig_workflow from cluster with id 11 to cluster with id 10."
   },
   "error": {
     "error": {
