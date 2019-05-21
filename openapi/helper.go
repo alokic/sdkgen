@@ -18,9 +18,6 @@ func isIncluded(arr []string, key string) bool {
 
 // typeOf returns type of a value.
 func typeOf(value interface{}) (string, error) {
-	if value == nil {
-		value = map[string]interface{}{}
-	}
 	o := strings.ToLower(reflect.TypeOf(value).Kind().String())
 
 	switch {
