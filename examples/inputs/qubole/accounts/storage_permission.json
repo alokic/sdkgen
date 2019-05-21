@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Get storage permissions for an account",
+  "version": "v2",
+  "http_method": "get",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "get_storage_permissions",
+  "path": "/api/v2/accounts/storage_permissions",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
@@ -13,6 +13,58 @@
   "request": {
   },
   "response": {
+    "status": "Success",
+    "messsage": "",
+    "permission_list": {
+         "s3:GetBucketLocation": {
+            "status": "Success",
+            "message": "Something",
+            "description": "Some s3 client libraries has dependency on this permission for other required s3 operations as mentioned above.",
+            "UIOrder": 1
+         },
+         "s3:PutObject": {
+            "status": "Success",
+            "message": "Something",
+            "description": "To store the data in s3 obtained after computation and / or storing logs",
+            "UIOrder": 2
+         },
+         "s3:GetObject": {
+            "status": "Success",
+            "message": "Something",
+            "description": "To read s3 data for computation purposes",
+            "UIOrder": 3
+         },
+         "s3:PutObjectAcl": {
+            "status": "Success",
+            "message": "Something",
+            "description": "Writing Object Acl",
+            "UIOrder": 4
+            },
+         "s3:GetObjectAcl": {
+            "status": "Success",
+            "message": "Something",
+            "description": "Reading Object Acl",
+            "UIOrder": 5
+         },
+         "s3:GetBucketAcl": {
+            "status": "Success",
+            "message": "Something",
+            "description": "Reading Bucket Acl",
+            "UIOrder": 6
+         },
+         "s3:ListBucket": {
+            "status": "Success",
+            "message": "Something",
+            "description": "To browse the s3 bucket in Qubole UI",
+            "UIOrder": 7
+        },
+         "s3:DeleteObject": {
+            "status": "Success",
+            "message": "Something",
+            "description": "To remove the s3 objects while doing computation",
+            "UIOrder": 8
+         }
+    }  
   },
   "error": {
       "error": {

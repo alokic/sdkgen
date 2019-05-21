@@ -1,26 +1,21 @@
 {
-  "name": "Update branding and logo information",
+  "name": "Enable sse on account",
   "version": "v1.2",
   "http_method": "put",
   "http_resource": "accounts",
-  "operation": "update_branding",
-  "path": "/api/v1.2/accounts/branding",
+  "operation": "enable_sse",
+  "path": "/api/v1.2/account",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
       "User-Agent": "mozilla"
   },
   "request": {
-    "account_id":"24",
-    "logo":{
-        "logo_uri":"https://www.xyz.com/images/logo.jpg"
-    },
-    "link":{
-        "link_url":"https://www.xyz.com/documentation", "link_label":"Documentation"
-    } 
+    "sse_algo":"SSE-KMS"
   },
   "response": {
-      "status": "success"
+    "status_code": 200,
+    "status": "done"
   },
   "error": {
       "error": {

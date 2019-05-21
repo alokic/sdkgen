@@ -1,18 +1,32 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Clone account",
+  "version": "v1.2",
+  "http_method": "post",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "clone_account",
+  "path": "/api/v1.2/accounts/clone",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
       "User-Agent": "mozilla"
   },
   "request": {
+    "id":"123",
+    "name":"example_account_name",
+    "clone_qbol_users":"true",
+    "generate_external_id":"true"
   },
   "response": {
+    "name": "example_account_name",
+    "state": "processing_create",
+    "groups": [
+        "system-admin",
+        "everyone"
+    ],
+    "authentication_token": "$AUTH-TOKEN",
+    "account_id": "123",
+    "is_aws_keys_enabled": true,
+    "status": "success"
   },
   "error": {
       "error": {

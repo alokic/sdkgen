@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/alokic/sdkgen/pkg/stringutils"
+	"github.com/alokic/sdkgen/pkg/typeutils"
 	"github.com/pkg/errors"
 )
 
@@ -137,6 +138,10 @@ func (n *Node) generate(key string, value interface{}, valueType string) error {
 }
 
 func (n *Node) properties(value interface{}) error {
+	if typeutils.Blank(value) {
+		return nil
+	}
+
 	for k, v := range value.(map[string]interface{}) {
 		err := n.processType(k, v)
 		if err != nil {

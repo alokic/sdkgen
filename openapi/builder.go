@@ -3,9 +3,7 @@ package openapi
 import (
 	"fmt"
 
-	"github.com/alokic/sdkgen/pkg/stringutils"
 	"github.com/alokic/sdkgen/pkg/typeutils"
-	"github.com/jinzhu/inflection"
 )
 
 // Builder buiils an openapi spec.
@@ -92,13 +90,13 @@ func (b *Builder) version() string {
 }
 
 func (b *Builder) title() string {
-	return inflection.Singular(stringutils.ToCamelCase(b.Spec.HTTPResource)) + " " + "API"
+	return NormalizeName(b.Spec.HTTPResource) + " " + "API"
 }
 
 func (b *Builder) description() string {
-	return inflection.Singular(stringutils.ToCamelCase(b.Spec.HTTPResource)) + " " + "Operations, requests and responses"
+	return NormalizeName(b.Spec.HTTPResource) + " " + "Operations, requests and responses"
 }
 
 func scope(op, resource string) string {
-	return stringutils.ToCamelCase(op) + inflection.Singular(stringutils.ToCamelCase(resource))
+	return NormalizeName(op)
 }

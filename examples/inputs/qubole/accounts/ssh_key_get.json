@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Get ssh key for an account",
+  "version": "v1.2",
+  "http_method": "get",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "get_ssh_key",
+  "path": "/api/v1.2/accounts/ssh_key",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
@@ -13,6 +13,8 @@
   "request": {
   },
   "response": {
+    "status_code": 200,
+    "public_key": "$PUBLIC-KEY"
   },
   "error": {
       "error": {

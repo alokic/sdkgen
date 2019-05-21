@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Refresh ssh key in account",
+  "version": "v2",
+  "http_method": "put",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "refresh_ssh_key",
+  "path": "/api/v2/accounts/ssh_key",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
@@ -13,6 +13,9 @@
   "request": {
   },
   "response": {
+    "status_code": 200,
+    "status": "Successfully created ssh keypair",
+    "public_key": "$PUBLIC-KEY"
   },
   "error": {
       "error": {

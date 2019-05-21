@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Delete a whitelisted IP for an account",
+  "version": "v2",
+  "http_method": "delete",
   "http_resource": "accounts",
   "operation": "",
-  "path": "",
+  "path": "/api/v2/accounts/whitelist_ip/{id}",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
@@ -13,6 +13,10 @@
   "request": {
   },
   "response": {
+    "status": {
+        "status_code": 200,
+        "message": "Deleted"
+    }
   },
   "error": {
       "error": {

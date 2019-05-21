@@ -6,9 +6,6 @@ import (
 	"strings"
 
 	"regexp"
-
-	"github.com/alokic/sdkgen/pkg/stringutils"
-	"github.com/jinzhu/inflection"
 )
 
 var (
@@ -30,7 +27,7 @@ func (p *Path) buildPost() *apiDef {
 	return &apiDef{
 		Desciption:  p.spec.Name,
 		Tags:        []string{fmt.Sprintf("%v", p.spec.Version)},
-		OperationID: p.spec.Operation, // fmt.Sprintf("%s_%s", p.spec.Operation, inflection.Singular(p.spec.HTTPResource)),
+		OperationID: p.spec.Operation,
 		Parameters:  p.createParameters(),
 		Request:     p.createRequest(),
 		Responses:   p.createResponse(),
@@ -41,18 +38,17 @@ func (p *Path) buildGet() *apiDef {
 	return &apiDef{
 		Desciption:  p.spec.Name,
 		Tags:        []string{fmt.Sprintf("%v", p.spec.Version)},
-		OperationID: p.spec.Operation, // fmt.Sprintf("%s_%s", p.spec.Operation, inflection.Singular(p.spec.HTTPResource)),
+		OperationID: p.spec.Operation,
 		Parameters:  p.createParameters(),
 		Responses:   p.createResponse(),
 	}
 }
 
 func (p *Path) createResponse() map[string]*response {
-	key := fmt.Sprintf("%s%s", inflection.Singular(stringutils.ToCamelCase(p.spec.Operation)), inflection.Singular(stringutils.ToCamelCase(p.spec.HTTPResource)))
 	return map[string]*response{
 		"200": &response{
 			Desciption: "Success response",
-			Content:    createContent(fmt.Sprintf("#/components/schemas/%sResponse", key), p.spec.Response),
+			Content:    createContent(fmt.Sprintf("#/components/schemas/%sResponse", scope(p.spec.Operation, p.spec.HTTPResource)), p.spec.Response),
 		},
 		"4XX": &response{
 			Desciption: "Error in processing request",
@@ -66,9 +62,8 @@ func (p *Path) createResponse() map[string]*response {
 }
 
 func (p *Path) createRequest() *request {
-	key := fmt.Sprintf("%s%s", inflection.Singular(stringutils.ToCamelCase(p.spec.Operation)), inflection.Singular(stringutils.ToCamelCase(p.spec.HTTPResource)))
 	return &request{
-		Content:  createContent(fmt.Sprintf("#/components/schemas/%sRequest", key), p.spec.Request),
+		Content:  createContent(fmt.Sprintf("#/components/schemas/%sRequest", scope(p.spec.Operation, p.spec.HTTPResource)), p.spec.Request),
 		Required: true,
 	}
 }

@@ -1,18 +1,21 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Whitelist an IP for an account",
+  "version": "v2",
+  "http_method": "post",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "add_whitelist_ip",
+  "path": "/api/v2/accounts/whitelist_ip",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
       "User-Agent": "mozilla"
   },
   "request": {
+    "ip_cidr" : "103.252.24.92"
   },
   "response": {
+    "status_code": 200,
+    "message": "IP whitelisted successfully."
   },
   "error": {
       "error": {

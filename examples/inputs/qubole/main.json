@@ -1,0 +1,21 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+      "title": "Qubole API Sepcification",
+      "description": "Operations, requests and responses",
+      "version": "v2",
+      "contact": {
+          "name": "API Support",
+          "url": "http://api.qubole.com/support",
+          "email": "support@qubole.com"
+      }
+  },
+  "tags": [
+      {"name": "v1.2"},
+      {"name": "v1.3"},
+      {"name": "v2"}
+  ],
+  "servers": [
+      {"url": "https://api.qubole.com"}
+  ]
+}

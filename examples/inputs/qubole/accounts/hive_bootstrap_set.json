@@ -1,18 +1,21 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Set hive bootstrap in account",
+  "version": "v2",
+  "http_method": "put",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "set_hive_bootstrap",
+  "path": "/api/v2/accounts/bootstrap",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
       "User-Agent": "mozilla"
   },
   "request": {
+    "script": "add jar s3://qubole/jars/loc1/stringutils-1.0-SNAPSHOT.jar;",
+	"is_user_bootstrap": "true"
   },
   "response": {
+    "status": "success"
   },
   "error": {
       "error": {

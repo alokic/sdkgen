@@ -1,18 +1,21 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Reset authentication token in account",
+  "version": "v1.2",
+  "http_method": "put",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "reset_authentication_token",
+  "path": "/api/v1.2/accounts/token",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
       "User-Agent": "mozilla"
   },
   "request": {
+    "emails": "test_1@domain.com,test_2@domain.com",
+    "groups": "group_1,group_2"
   },
   "response": {
+    "message": "Tokens updated successfully"
   },
   "error": {
       "error": {

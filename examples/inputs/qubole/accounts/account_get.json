@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "View an account information",
+  "version": "v1.2",
+  "http_method": "get",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "get_account",
+  "path": "/api/v1.2/account/",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
@@ -13,6 +13,23 @@
   "request": {
   },
   "response": {
+    "account_id": "123",
+    "authentication_token": "$Auth_token",
+    "authentication_token_updated_at": "2019-02-19T10:26:31Z",
+    "capabilities": 0,
+    "created_at": "2019-02-19T10:26:31Z",
+    "disabled": false,
+    "disabled_at": null,
+    "disabled_by": null,
+    "id": 23,
+    "is_admin": true,
+    "is_default": false,
+    "is_token_encrypted": true,
+    "setting_id": null,
+    "setting_type": null,
+    "updated_at": "2019-02-19T10:26:31Z",
+    "user_id": 12,
+    "user_type": "regular"
   },
   "error": {
       "error": {

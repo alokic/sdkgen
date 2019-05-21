@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Get users in an account",
+  "version": "v1.2",
+  "http_method": "get",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "get_users",
+  "path": "/api/v1.2/accounts/get_users",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
@@ -13,6 +13,32 @@
   "request": {
   },
   "response": {
+    "users": [
+        {
+            "id":103,
+            "is_admin": true,
+            "account_id":123,
+            "disabled": false,
+            "user_id":102,
+            "created_at": "2019-04-15T06:07:23Z",
+            "authentication_token_updated_at": "2019-04-15T06:07:23Z",
+            "name": "exmaple_user_name",
+            "email": "exmaple_user_email",
+            "last_login": "2019-04-15T07:23:35Z",
+            "groups": [
+                {
+                    "id":431,
+                    "name": "system-admin",
+                    "source": "system"
+                },
+                {
+                    "id": 434,
+                    "name": "everyone",
+                    "source": "system"
+                }
+            ]
+        }
+    ]
   },
   "error": {
       "error": {

@@ -1,18 +1,21 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Resume an account",
+  "version": "v1.2",
+  "http_method": "put",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "resume_account",
+  "path": "/api/v1.2/accounts/resume",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
       "User-Agent": "mozilla"
   },
   "request": {
+    "id":"123"
   },
   "response": {
+    "status": "Account has been resumed successfully.",
+    "status_code": 200
   },
   "error": {
       "error": {

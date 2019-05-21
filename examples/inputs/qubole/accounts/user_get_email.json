@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Get user emails",
+  "version": "v1.2",
+  "http_method": "get",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "get_user_emails",
+  "path": "/api/v1.2/accounts/get_user_emails",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
@@ -12,8 +12,11 @@
   },
   "request": {
   },
-  "response": {
-  },
+  "response": [
+    "exmaple_user_email1",
+    "exmaple_user_email2",
+    "exmaple_user_email3"
+  ],
   "error": {
       "error": {
           "error_code": 403,

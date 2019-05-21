@@ -1,11 +1,13 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Get monthly usage of an account",
+  "version": "v1.2",
+  "http_method": "get",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
-  "query": {},
+  "operation": "get_monthly_usage",
+  "path": "/api/v1.2/accounts/monthly_usage",
+  "query": {
+      "acc_id": 11
+  },
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
       "User-Agent": "mozilla"
@@ -13,6 +15,15 @@
   "request": {
   },
   "response": {
+    "usage": {
+        "qcuh": 28808,
+        "users": 182,
+        "connector_invocations": 854
+    },
+    "usage_period": {
+        "month": 4,
+        "year": 2019
+    }
   },
   "error": {
       "error": {

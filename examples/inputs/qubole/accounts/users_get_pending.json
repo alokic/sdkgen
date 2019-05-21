@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "Get pending users of an account",
+  "version": "v1.2",
+  "http_method": "get",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "get_pending_users",
+  "path": "/api/v1.2/accounts/get_pending_users",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
@@ -13,6 +13,15 @@
   "request": {
   },
   "response": {
+    "users": [
+        {
+            "requestee_user_id": 1234,
+            "account_id":123,
+            "request_token": "example_request_token",
+            "email": "example_user_email",
+            "account_name": "example_account_name"
+        }
+    ]
   },
   "error": {
       "error": {

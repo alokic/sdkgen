@@ -1,16 +1,25 @@
 {
-  "name": "",
-  "version": "v2.0",
-  "http_method": "",
+  "name": "List whitelisted IPs",
+  "version": "v2",
+  "http_method": "get",
   "http_resource": "accounts",
-  "operation": "",
-  "path": "",
+  "operation": "list_whitelist_ip",
+  "path": "/api/v2/accounts/whitelist_ip",
   "query": {},
   "headers": {
       "X-AUTH-TOKEN": "kkjkj",
       "User-Agent": "mozilla"
   },
   "request": {
+    "account_whitelisted_ips": [
+        {
+            "account_id": 16,
+            "created_at": null,
+            "id": 1,
+            "ip_cidr": "103.252.24.92",
+            "updated_at": null
+        }
+    ]
   },
   "response": {
   },
