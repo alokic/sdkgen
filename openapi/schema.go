@@ -82,9 +82,9 @@ func newNode(ctx string) *Node {
 
 func (n *Node) add(key string, in *Node) {
 	if n.Type == "" {
-		if in.Type == "object" {
-			in.AdditionalProperties = true
-		}
+		// if in.Type == "object" {
+		// 	in.AdditionalProperties = true
+		// }
 
 		gschema.root[key] = in
 	}
@@ -132,7 +132,9 @@ func (n *Node) generate(key string, value interface{}, valueType string) error {
 		root := newNode(n.context)
 		root.generate(objectName(n.context, key), value, "object")
 	default:
-		n.add(key, &Node{Type: valueType})
+		if valueType != "" {
+			n.add(key, &Node{Type: valueType})
+		}
 	}
 	return nil
 }

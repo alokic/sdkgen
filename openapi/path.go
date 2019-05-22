@@ -93,12 +93,18 @@ func (p *Path) createParammeter(key string, typ string, paramType string) *param
 func (p *Path) createParameters() []*parameter {
 	ps := []*parameter{}
 	for k, v := range p.spec.Headers {
-		typ, _ := typeOf(v)
+		typ, err := typeOf(v)
+		if err != nil {
+			continue
+		}
 		ps = append(ps, p.createParammeter(k, typ, "header"))
 	}
 
 	for k, v := range p.spec.Query {
-		typ, _ := typeOf(v)
+		typ, err := typeOf(v)
+		if err != nil {
+			continue
+		}
 		ps = append(ps, p.createParammeter(k, typ, "query"))
 	}
 
