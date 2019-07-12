@@ -1,7 +1,5 @@
 # sdkgen
 
-[![Coverage Status](https://coveralls.io/repos/github/alokic/sdkgen/badge.svg?t=4uMFW5)](https://coveralls.io/github/alokic/sdkgen)
-
 Generate `openapi 3 spec` from `json` request and responses of `REST APIs`.
 
 ## Docker Setup
