@@ -1,7 +1,6 @@
 # sdkgen
 
 [![Coverage Status](https://coveralls.io/repos/github/alokic/sdkgen/badge.svg?t=4uMFW5)](https://coveralls.io/github/alokic/sdkgen)
-[![Build Status](https://drone.alokic.com/api/badges/alokic/sdkgen/status.svg)](https://drone.alokic.com/alokic/sdkgen)
 
 Generate `openapi 3 spec` from `json` request and responses of `REST APIs`.
 
@@ -163,24 +162,3 @@ For details check: [Openapi Codegen](https://github.com/OpenAPITools/openapi-gen
 ```bash
     openapi-generator generate   -i <input_file_path> -g python -o <output_folder> --enable-post-process-file
 ```
-
-## Release Process
-
-We follow [Feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
-
-Feature branches are merged in `master` branch after `PR` approval.
-
-Deployment is triggered when we tag `master` branch.
-
-Tagging convention for `production` environment is `v.MAJOR_NUMBER.MINOR_NUMBER.PATCH_NUMBER`.
-
-We increment `NUMBERS` when:
-
-* `MAJOR_NUMBER` when breaking backward compatibility.
-* `MAJOR_NUMBER` when adding a new feature which doesn’t break compatibility.
-* `PATCH_NUMBER` when fixing a bug without breaking compatibility.
-
-Tagging convention for `staging` is `v.MAJOR_NUMBER.MINOR_NUMBER.PATCH_NUMBER-<SUFFIX>.<CHILD_SUFFIX>`.
-
-* `SUFFIX` is mandatory for `staging` deployments. Valid `SUFFIX` are `alpha`, `beta`, `rc`.
-* `CHILD_SUFFIX` is optional and should be used for incremental updates in a tag like `v.1.0.0-rc.1`
